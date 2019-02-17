@@ -10,26 +10,31 @@ body {
 	font-family: Poppins;
 }
 
+p {
+	margin-top: 0;
+	margin-bottom: 15px;
+}
+
 .container {
 	width: 1140px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.space-between {
+.justify-between {
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
 }
 
 
-
-.title2 {
+.title-2 {
 	color: #0d3e60;
 	font-size: 30px;
 	font-weight: 700;
 	line-height: 24px;
 	margin-bottom: 35px;
+	margin-top: 0;
 }
 
 .checklist {
