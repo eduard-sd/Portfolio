@@ -11,25 +11,39 @@
 	flex-direction: column;
 	position: relative;
 	transition: 0.4s ease-out;
+	margin-bottom: 61px;
 }
 
 .card:hover {
-
+	color: #ffffff;
 	box-shadow: 4px 7px 32px rgba(235, 90, 56, 0.52);
 	background-color: #eb5238;
 	background-image: linear-gradient(to top, #eb5238 0%, #eb6f38 100%);
-	color: #ffffff;
 }
 
 .card:hover .card-circle {
 	background-color: rgba(255, 255, 255, .1);
 }
-.card:hover .card-circkle__inner {
+.card:hover .card-circle__inner {
 	background-color: #ffffff;
 }
 
-.card:hover .card-circkle__inner img {
-	fill: green;
+.card .card-circle__inner .svg-path {
+	fill:  #ffffff;
+	transition: 0.4s ease-out;
+}
+
+.card:hover .card-circle__inner .svg-path {
+	fill:  #0d3e60;
+}
+
+.card .card__read-more .svg-arrow {
+	fill:  #fff9df;
+	transition: 0.4s ease-out;
+}
+
+.card:hover .card__read-more .svg-arrow {
+	fill:  #FFFFFF;
 }
 
 .card__title {
@@ -47,8 +61,48 @@
 }
 
 .card__read-more {
-margin-top: auto;
+	margin-top: auto;
+	display: flex;
+	position: relative;
+	height: 20px;
 }
+
+.card__read-more-link {
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: 0.7s ease-out;
+	text-decoration: none;
+}
+
+
+.card:hover .card__read-more-link {
+	left: 130px;
+	text-decoration: none;
+}
+
+.card__read-more-text {
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translateX(-100%);
+	padding-right: 15px;
+	text-align: right;
+	display: inline-block;
+	opacity: 0;
+	width: 100px;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 24px;
+	text-decoration: none;
+	
+}
+
+.card:hover .card__read-more-text {
+	opacity: 1;
+}
+
 
 .card-circle {
 	top: 0;
@@ -62,7 +116,7 @@ margin-top: auto;
 	position: absolute;
 }
 
-.card-circkle__inner {
+.card-circle__inner {
 	left: 7px;
 	top: 7px;
 	width: 62px;
@@ -77,3 +131,4 @@ margin-top: auto;
 	align-items: center;
 	
 }
+

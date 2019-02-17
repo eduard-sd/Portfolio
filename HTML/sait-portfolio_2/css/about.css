@@ -1,14 +1,47 @@
 .about-cards {
 	width: 488px;
+	display: flex;
+	justify-content: space-between;
 }
 
+
+.cards-1st-colom {
+
+}
+
+.cards-2nd-colom {
+	padding-top: 150px;
+}
+
+
 .about-content {
+	padding-top: 101px;
 	width: 555px;
 	color: #0d3e60;
 	font-family: Poppins;
 	font-size: 22px;
 	font-weight: 300;
 	line-height: 35.99px;
+}
+
+.about-wrapper {
+	padding-top: 65px;
+	position: relative;
+	overflow: hidden;
+}
+
+.about-wrapper::after {
+	position: absolute;
+	right: -270px;
+	top: 100px;
+	content: "";
+	width: 612px;
+	height: 518px;
+	display: block;
+	background-image: url("../img/illustrations/Shape_3.svg");
+	background-repeat: no-repeat;
+	background-position: right top;
+	z-index: -1;
 }
 
 .about-toggle-wrapper{
