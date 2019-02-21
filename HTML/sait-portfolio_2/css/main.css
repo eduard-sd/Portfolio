@@ -24,7 +24,11 @@ p {
 .justify-between {
 	display: flex;
 	justify-content: space-between;
-	/*align-items: flex-end;*/
+	
+}
+
+.align-items {
+	align-items: center;
 }
 
 
