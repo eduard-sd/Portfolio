@@ -1,0 +1,144 @@
+.about-us-border {
+box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1);
+border-bottom: 1px solid #e1e1e1;
+background-color: #fcfcfc;
+}
+
+.about-us .container {
+	display: flex;
+	padding-top: 73px;
+}
+
+/*--------------------------------------
+left - colum
+---------------------------------------*/
+
+.about-us-left {
+	margin-right: 33px;
+	width: 462px;
+	text-align: right;
+	margin-bottom: 265px;
+}
+
+.about-us h2 {
+	margin: 0;
+	color: #444444;
+	font-family: "Open Sans";
+	font-size: 27px;
+	font-weight: 600;
+	line-height: 24px;
+	text-transform: uppercase;
+	letter-spacing: 1.62px;
+}
+
+.about-us-right__line1,
+.about-us-right__line2,
+.about-us-right__line3,
+.about-us-right__line4 {
+	display: flex;
+	margin-bottom: 45px;
+}
+
+.about-us-line {
+	margin-top: 39px;
+	margin-left: auto;
+	width: 156px;
+	border-bottom: 2px solid #e1e1e1;
+	align-items: center;
+	position: relative;
+}
+
+.about-us-circle {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	position: absolute;
+	border: 1px solid #e1e1e1;
+	left: 150px;
+	top: -4px;
+	background-color: #ffffff;
+}
+
+.about-us-left_text {
+	margin-top: 40px;
+	color: #888888;
+	font-family: "Open Sans";
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 21px;
+}
+
+.about-us-left_text p:first-child {
+	padding-bottom: 6px
+}
+
+.about-us-left_text a {
+	color: #c3512f;
+	font-family: "Open Sans";
+	font-weight: 600;
+}
+
+/*--------------------------------------
+right - colum
+---------------------------------------*/
+
+.about-us-right__text a {
+color: #c3512f;
+font-family: "Open Sans";
+font-weight: 600;
+}
+
+.about-us-right {
+	margin-left: 33px;
+	width: 479px;
+	text-align: left;
+}
+
+.about-us-right__circle {
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	background-color: #d0d0d0;
+	margin-right: 32px;
+	position: relative;
+	z-index: 2;
+}
+
+.first-cicrle::before {
+    height: 450px;
+    left: 30px;
+    top: 20px;
+    position: absolute;
+    display: block;
+    content: "";
+    border-left: 1px dashed #e1e1e1;
+    z-index: -1;
+}
+.about-us-right img { z-index: 3; }
+
+.about-us-right h3 {
+	margin: 0;
+	color: #444444;
+	font-family: "Open Sans";
+	font-size: 17px;
+	font-weight: 600;
+	line-height: 21px;
+	text-transform: uppercase;
+}
+
+.about-us-right p {
+	color: #a0a0a0;
+	font-family: "Open Sans";
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 21px;
+}
+
+
+.about-us img {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+

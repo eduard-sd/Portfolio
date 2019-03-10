@@ -1,0 +1,144 @@
+.header {
+	width: 100%;
+	box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
+	border: 1px solid #e1e1e1;
+	font-family: "Open Sans";
+}
+
+.header-content {
+	height: 88px;
+	display: flex;
+}
+
+.logo-head {
+	/* Style for "Logo" */
+	width: 160px;
+	height: 43px;
+	margin-right: 501px;
+	margin-top: 16px;
+}
+
+.navigation {
+	margin-top: 41px;
+}
+
+.navigation ul {
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+.navigation ul li a {
+	display: block;
+	margin-right: 25px;
+	text-decoration: none;
+	color: #929292;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 24px;
+	padding-bottom: 22px;
+}
+.navigation ul li:last-of-type a {margin-right: 0;}
+
+.navigation ul li a:hover {
+	color: #5e5e5e;
+	border-bottom: 2px solid #c3512f;
+}
+
+/*------------------------------------------
+
+HEADER SLIDER
+
+--------------------------------------------*/
+.slider-block {
+	margin: 0 auto;
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 40%;
+}
+
+.slider-block .slide_img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.slider-block .slide_img img {
+	width: 100%;
+	height: 100%;
+}
+
+#i1, #i2, #i3 {display: none;}
+
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 99;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    background-color: #000000;
+    opacity: 0.3;
+    border-radius: 5px;
+}
+
+.prev {left: 15px;}
+.next {right: 15px;}
+
+label span {
+	position: absolute;
+	top: 50%;
+ 	transform: translateY(-50%);
+}
+.fas,
+.fal{ 
+	
+	margin: 19px 24px;
+	width: 12px;
+	height: 22px;
+	font-size:22px;
+	color: #f9feff;
+
+}
+
+.slider-block .slider-navigation {
+	width: 100%;
+	height: 11px;
+	bottom: 16px;
+	position: absolute;
+	text-align: center;
+	z-index: 99;
+}
+
+.slider-navigation__dots {
+    width: 14px;
+    height: 14px;
+    margin-right: 2px;
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    background: #000000;
+    opacity: 0.65;
+}
+
+.slider-navigation__dots:hover {
+	cursor: pointer;
+    background: #FFFFFF;
+}
+
+.slide_img {z-index: -1;}
+
+#i1:checked ~ #one, 
+#i2:checked ~ #two, 
+#i3:checked ~ #three {
+	z-index: 9;
+}
+
+#i1:checked  ~  .slider-navigation #dot1,
+#i2:checked  ~  .slider-navigation #dot2,
+#i3:checked  ~  .slider-navigation #dot3 { 
+	background-color: #ffffff;
+}

@@ -1,0 +1,111 @@
+.reviews {
+	padding-top: 51px;
+}
+
+.reviews-cards {
+	display: flex;
+	margin-bottom: 64px;
+}
+
+.reviews-cards__left{
+	margin-right: 30px;
+}
+.reviews-cards__right{
+	margin-left: 30px;
+}
+
+.reviews-cards h3 {
+	color: #222222;
+	font-family: "Open Sans";
+	font-weight: 600;
+	font-size: 19px;
+	line-height: 21px;
+	margin: 0;
+}
+
+.reviews-cards__position {
+	color: #919191;
+	font-family: "Open Sans";
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 21px;
+}
+
+.reviews-cards__text {
+	color: #666666;
+	font-family: "Open Sans";
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 21px;
+}
+
+.reviews-contact {
+	width: 100%;
+	height: 86px;
+	border: 1px solid #e1e1e1;
+	background-color: #fcfcfc;
+	color: #666666;
+	font-family: "Open Sans";
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 21px;
+	display: flex;
+	margin-bottom: 50px;
+}
+
+.reviews-contact p {
+	margin-left: 29px;
+	margin-top: 36px;
+	margin-right: 29px;
+}
+
+/*---------------Button-----------*/
+.reviews-contact__button {
+	margin: 0;
+	padding: 0;
+    padding:  32px 21px 22px 0;
+}
+
+.reviews-contact__button .submit {
+	border-radius: 3px;
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 400;
+    color: #713928;
+    font-weight: 400;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.37);
+    font-family: "Open Sans";
+    background-image: linear-gradient(to bottom, #cd6e52 0%, #c65939 51%, #8F3809 100%);
+    padding-left: 64px;
+    padding-right: 47px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    position: relative;
+}
+
+.mail-icon {
+	margin: 0;
+	position: absolute;
+    left: 27px;
+    top: 21px;
+	font-size: 12px;
+	color:#713928;
+	cursor: pointer;
+}
+
+
+.reviews-contact__button .submit:hover {
+	background-position: bottom center;
+	color: #ffffff;
+
+
+    background-size: auto 200%;
+    transition: 0.3s ease-in;
+}
+
+.submit:hover .mail-icon {
+	color: #f1f1f1;
+	 text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.37);
+	 transition: 0.3s ease-in;
+}

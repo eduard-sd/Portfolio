@@ -1,0 +1,109 @@
+.feed-back {
+	padding-top: 73px;
+}
+
+.feed-back h3 {
+	color: #222222;
+	font-family: "Open Sans";
+	font-size: 19px;
+	font-weight: 600;
+	line-height: 21px;
+	margin: 0;
+}
+
+.feed-back label {
+	color: #666666;
+	font-family: "Open Sans";
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 21px;
+}
+
+.feed-back__first-line {
+	display: flex;
+}
+
+.feed-back__first-line,
+.feed-back__second-line,
+.feed-back__third-line {
+	margin-top: 26px;
+}
+
+.first-input p,
+.second-input p,
+.feed-back__third-line p,
+.feed-back__second-line p { 
+	margin: 0;
+	margin-top: 12px;
+}
+
+.first-input label:after,
+.second-input label:after,
+.feed-back__third-line label:after,
+.feed-back__second-line label:after { 
+	content:" *"; 
+	color: #c15223;
+}
+
+#Name {
+	width: 507px;
+	height: 42px;
+	border: 1px solid #e1e1e1;
+
+	margin-right: 13px;
+	font-family: "Open Sans";
+	font-weight: 200;
+}
+
+#E-mail{
+	width: 507px;
+	height: 42px;
+	border: 1px solid #e1e1e1;
+	background-color: #fcfcfc;
+	font-family: "Open Sans";
+	font-weight: 200;
+}
+
+#Subject {
+	/* Style for "Base" */
+	width: 1028px;
+	height: 42px;
+	border: 1px solid #e1e1e1;
+	background-color: #fcfcfc;
+	font-family: "Open Sans";
+	font-weight: 200;
+}
+
+#Message {
+	/* Style for "Base" */
+	width: 1028px;
+	height: 179px;s
+	border: 1px solid #e1e1e1;
+	background-color: #fcfcfc;
+	font-family: "Open Sans";
+	font-weight: 200;
+}
+
+.feed-back__submit {
+	border: none;
+	border-radius: 2px;
+	width: 147px;
+	height: 50px;
+	background-color: #c3512f;
+	color: #fcfcfc;
+	margin-top: 25px;
+	margin-bottom: 152px;
+	cursor: pointer;
+}
+
+.feed-back img{
+	width: 100%;
+	position: center bottom;
+}
+
+#Name:required:valid,
+#E-mail:required:valid,
+#Subject:required:valid,
+#Message:required:valid {
+  border-color: green;
+}

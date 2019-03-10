@@ -1,0 +1,103 @@
+.gallery {
+	padding-top: 76px;
+	background-color: #fcfcfc;
+	border: 1px solid #e1e1e1;
+}
+
+.gallery h1 {
+	margin: 0;
+	color: #444444;
+	font-family: "Open Sans";
+	font-weight: 600;
+	line-height: 24px;
+	text-transform: uppercase;
+	/* Text style for "S, HOWCASI" */
+	letter-spacing: 1.62px;
+	text-align: center;
+}
+
+.gallery-line {
+	margin-top: 39px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 320px;
+	border-bottom: 2px solid #e1e1e1;
+	align-items: center;
+	position: relative;
+}
+
+.gallery-circle {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	position: absolute;
+	border: 1px solid #e1e1e1;
+	left: 150px;
+	top: -4px;
+	background-color: #ffffff;
+}
+
+.gallery-text {
+	margin-top: 41px;
+	text-align: center;
+}
+
+.gallery-text p {
+	margin: 0;
+	color: #888888;
+	font-family: "Open Sans";
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 21px;
+
+}
+.gallery-text a {
+	color: #c3512f;
+	font-family: "Open Sans";
+	font-weight: 600;
+}
+
+.gallery-photos {
+	margin-top: 83px;
+	margin-bottom: 152px;
+}
+
+.gallery-photos__fist-line,
+.gallery-photos__second-line  {
+	display: flex;
+}
+
+.gallery-card {
+	/* Style for "background" */
+	width: 257px;
+	height: 229px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.23);
+	background-color: #ffffff;
+}
+.gallery-card__description {
+	/* Style for "Single Por" */
+	padding-left: 16px;
+	color: #666666;
+	font-size: 13px;
+	font-family: "Open Sans";
+	font-weight: 400;
+	line-height: 21px;
+	position: relative;
+}
+.gallery-card__description::after {
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 19px solid transparent;
+    border-right: 19px solid transparent;
+    border-bottom: 19px solid #ffffff;
+    content: "";
+    position: absolute;
+    left: 110px;
+    top: -22px;
+}
+
+.gallery-card__description p {
+	margin-top: 10px;
+	margin-bottom: 16px;
+}
