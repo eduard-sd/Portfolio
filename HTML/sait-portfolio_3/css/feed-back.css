@@ -96,10 +96,10 @@
 	cursor: pointer;
 }
 
-.feed-back img{
+/*.feed-back img{
 	width: 100%;
 	position: center bottom;
-}
+}*/
 
 #Name:required:valid,
 #E-mail:required:valid,
