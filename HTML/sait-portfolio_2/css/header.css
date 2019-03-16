@@ -166,6 +166,8 @@
 	font-weight: 700;
 	line-height: 39.85px;
 	margin-bottom: 36px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 @media (min-width: 1140px ) {
 	.header__title  {

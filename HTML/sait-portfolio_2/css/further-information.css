@@ -1,0 +1,252 @@
+
+
+.title-2 {
+	color: #0d3e60;
+	font-size: 30px;
+	font-weight: 700;
+	line-height: 24px;
+	margin-bottom: 35px;
+	margin-top: 0;
+}
+
+.checklist {
+	font-size: 16px;
+	font-weight: 500;
+/*	line-height: 36px;*/
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	padding-top: 15px;
+	margin-bottom: 47px;
+}
+
+.checklist li {
+	margin-bottom: 6px;
+	position: relative;
+	padding-left: 47px;
+
+}
+
+.checklist li:before {
+	background-image: url(../img/icons/point-icons.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+	content: "";
+	left: 0;
+	/*top: 10px;*/
+	position: absolute;
+	display: block;
+	height: 29px;
+	width: 29px;
+
+}
+
+.further-information-wrapper {
+	padding-top: 60px;
+	padding-bottom: 35px;
+}
+@media (min-width: 1140px ) {
+	.further-information-wrapper {
+		background-image: url(../img/illustrations/ilustration.png);
+		background-repeat: no-repeat;
+		background-position: left;
+		padding-top: 105px;
+		padding-bottom: 65px;
+		background-size: 530px auto;
+	}
+}
+
+@media (min-width: 1600px ) {
+	.further-information-wrapper {
+		background-size: auto auto;
+	}
+}
+
+
+.further-information-image-mobile{
+}
+
+.further-information-image-mobile img{
+	max-width: 100%;
+	margin-bottom: 60px;
+}
+
+@media (min-width: 1140px ) {
+	.further-information-image-mobile {
+		display: none;
+	}
+}
+
+.further-information__content {
+	margin-left: auto;
+	color: rgba(13, 62, 96, .86);
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.875;
+	margin-bottom: 40px;
+}
+@media (min-width: 1140px ) {
+	.further-information__content {
+		width: 555px;
+	}
+}
+
+.further-information__content p {
+	margin-bottom: 25px;
+}
+
+.form {
+
+}
+
+.input {
+	width: 293px;
+	height: 51px;
+	border-radius: 19px;
+	background-color: #000000;
+	background-image: linear-gradient(to top, #fff9df 0%, #fffdf4 100%);
+	border: none;
+	outline: none;
+	color: #2e435e;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 30px;
+	padding-left: 26px;
+	padding-right: 26px;
+	margin-right: 25px;
+	margin-bottom: 15px;
+}
+@media (min-width: 1140px ) {
+	.input {
+		margin-bottom: 0;
+	}
+}
+
+::-webkit-input-placeholder {
+	color: #2e435e;
+}
+:-ms-input-placeholder {
+	color: #2e435e;
+}
+::-moz-placeholder {
+	color: #2e435e;;
+	opacity: 1;
+}
+:-moz-placeholder {
+	color: #2e435e;
+	opacity: 1;
+}	
+
+.input:focus {
+	outline: none;
+}
+
+.checkbox {
+	display: none;
+}
+
+.checkbox:checked + .checkbox-fake::after {
+	width: 12px;
+	height: 12px;
+}
+
+.checkbox-fake {
+	border-radius: 50px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 10px;
+	width: 20px;
+	height: 20px;
+	box-shadow: 2px 2px 0 rgba(14, 15, 33, 0.07);
+	border: 1px solid rgba(194, 194, 194, 0.4);
+	
+	background-color: #ffffff;
+	position: relative;
+}
+
+.checkbox-fake:after {
+	content: "";
+	border-radius: 50px;
+	display: block;
+	width: 0px;
+	height: 0px;
+	background-color: #eb5238;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	transition: 0.2s ease-in;
+}
+
+.checkbox-description {
+	color: #0d3e60;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 30px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.checkbox-description a {
+	color: #0d3e60;
+	font-weight: 700;
+	text-decoration: underline;
+}
+
+.form-group {
+	align-items: center;
+	margin-bottom: 25px;
+
+}
+@media (min-width: 700px ) {
+	.form-group {
+		display: flex;
+		flex-direction: row;
+	}
+}
+
+.submit {
+	width: 216px;
+	height: 52px;
+	border-radius: 20px;
+	background-color: #eb5238;
+	background-image: linear-gradient(to top, #eb5238 0%, #eb6f38 100%);
+
+	cursor: pointer;
+
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 30px;
+	border: none;
+	outline: none;
+	margin-right: 27px;
+	margin-bottom: 15px;
+}
+
+@media (min-width: 700px ) {
+	.submit {
+		margin-bottom: 0;
+	}
+}
+
+
+.submit:hover {
+    background-image: linear-gradient(to top,  #eb6f38 0%, #eb5238 100%);
+}
+
+.submit:focus {
+	
+}
+
+.form-label{
+	cursor: pointer;
+}
+
+.form-notice {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 24px;
+
+	/* Text style for "o, r go to" */
+	color: #0d3e60;
