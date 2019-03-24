@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Beboss</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!---------------------FAVICONS------------------------>
+	<link rel="icon" type="image/png" sizes="16x16" href="../beboss/img/favicon/favicon.ico">
+
+	<!---------------------CSS---------------------------->
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/header.css">
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/form.css">
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
+
+</head>
+<body>
+	<div class="main-logo">
+		<a href="#">
+			<img src="img/logo.png" alt="logo-BeBoss">
+		</a>
+	</div>
+	<div class="container">
+		<div class="header">
+			<div class="header-img">
+				<h1>Поставь ссылку на БИБОСС</h1>
+				<h2>Заработай баллы!</h2>
+			</div>
+			<div class="header-mac">
+				<div class="header-mac__img">
+					<a href="#">Франшиза Dunkin’ Donuts на БИБОСС</a>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="content-container">
+				<div class="content-container__info">
+					<p>БИБОСС даёт возможность получить бесплатные баллы – нужно лишь разместить на сайте компании любую из ссылок:</p>
+					<ul>
+						<li><span class="content-container__info-shift">Текстовая ссылка «Франшиза <span>[Название]</span> на БИБОСС»</span></li>
+						<li><span class="content-container__info-shift">Текстовая ссылка «Наша франшиза на БИБОСС»</span></li>
+						<li><span class="content-container__info-shift">Кнопка “Нравится франшиза” + счетчик популярности</span></li>
+					</ul>
+				</div>
+				<div class="content-container__points">
+					<p>Зачем нужны <a href="#">баллы</a>?</p>
+					<p>Больше баллов — выше позиция в выдаче категории</p>
+				</div>
+				<div class="content-container__rules">
+					<div class="content-container__rules-col1">
+						<p>Правила размещения ссылки</p>
+						<ul>
+							<li><span>Ссылка должна быть индексируемой (без тегов &lt;noindex&gt; и &lt;nofollow&gt;)</span></li>
+							<li><span>Ссылка должна быть читаемой, не скрытой от глаз посетителя сайта,</span></li>
+							<li><span>Ссылка должна быть размещена на странице сайта, посвящённой франчайзингу,</span></li>
+							<li><span>При размещении ссылок на другие порталы о франчайзинге – баллы обнуляются.</span></li>
+						</ul>
+					</div>
+					<div class="content-container__rules-col2">
+						<p>Стоимость ссылки</p>
+						<p>200 баллов</p>
+						<p>ТиЦ Вашего сайта от 10</p>	
+						<p>50 баллов</p>
+						<p>ТиЦ Вашего сайта от 0 до 10</p>
+					</div>
+				</div>
+				<form action="url">
+					<p>Получить ссылку</p>
+					<div class="form-fields">
+						
+						<div class="form-fields__row">
+							<label for="name">Ваше имя</label>
+							<input class='form-fields__input' id="name" type="text" placeholder='Представьтесь, пожалуйста'>
+						</div>
+						
+						<div class="form-fields__row">
+							<label for="phone-number">Номер телефона</label>
+							<input class='form-fields__input' type="tel" id='phone-number' pattern="[0-9]{11}" placeholder='Для начисления баллов и связи с Вами'>
+						</div>
+						<div class='form-fields__row' id="form-fields__input-required"><span>Укажите правильный телефон</span></div>
+						<div class="form-fields__row">
+							<label for="fаranchise">Название франшизы</label>
+							<input class='form-fields__input' id='fаranchise' list="fаranchise-list" type="text" placeholder='Например, Subway'>
+							<datalist id="fаranchise-list">
+							  <option value="Проворный ткачик">
+							  <option value="ПРОФИ-СПОРТ">
+							  <option value="Проспект">
+							  <option value="Просто Чудо">
+							  <option value="Прокат Пони+">
+							</datalist>
+						</div>
+						<div class="form-fields__button">
+							<input class="form-button" type="submit" onclick="return validate(this.form);" value='Получить ссылку'>
+						</div>
+					</div>
+				</form>
+				<p class='footer-text'><b>Это еще не все...</b> Вы можете заработать дополнительные баллы, если разместите на своём сайте новость, интервью или статью БИБОСС о Вашей компании с активной ссылкой! 50 баллов за активную ссылку на новость!</p>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="container">
+			<div class="footer-content">
+			</div>
+		</div>
+	</div>
+	<script src='js/main.js'>
+	</script>
+</body>
+</html>
