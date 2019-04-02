@@ -3,3 +3,9 @@
 
 HTML/sait-portfolio_4/gulp*
 HTML/sait-portfolio_4/beboss/.idea*
+
+/.idea/
+/out/
+.gitignore
+*.iml
+

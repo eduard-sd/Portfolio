@@ -153,9 +153,9 @@ ProductsMainContainer.addEventListener('click', (e) => {
 
     if (e.target.matches('#addToCartButton')){
         let state = AddItemInCart(parseInt(Id));
-        ItemCounterUpdate(parseInt(Id), 'button');
-        return State.cart[itemIndexInCart].counter = state;
+        //передать count в корзину
 
+        ItemCounterUpdate(parseInt(Id), 'button');
     }
 });
 
@@ -170,17 +170,14 @@ ProductsMainContainer.addEventListener('click', (e) => {
 const AddItemInCart = (targetId) => {
     const itemIndex2 = State.items.findIndex(x => x.id === targetId);
     let checkItemInCart = State.cart.includes(State.items[itemIndex2]);
+
     let itemsCounter = State.items[itemIndex2].counter;// получем количество выбранного товара
     console.log(State.cart);
     if (checkItemInCart && itemsCounter > 0) {
-        const itemIndexInCart = State.cart.findIndex(x => x.id === targetId);// находим индекс по id
-        State.cart[itemIndexInCart].counter += itemsCounter; //по индексу в списке прибавляем значение счетчика
+        CartCounterUpdate (parseInt(targetId), 'plus');
         ShowEmptyCart();
-        const cartCounter = CartFull.querySelector('[data-productid ="' + targetId + '"] [data-count]'); // указывает путь к элементу в шаблоне
-        cartCounter.innerHTML = State.cart[itemIndexInCart].counter; // меняем видимую чать в шаблоне
-        // State.cart[itemIndexInCart](renderCart);
         console.log(State.cart);
-        return State.cart[itemIndexInCart].counter;
+        // return State.cart[itemIndexInCart].counter;
     }
     if (!checkItemInCart && itemsCounter > 0) {
         State.cart.push(State.items[itemIndex2]);
@@ -189,15 +186,18 @@ const AddItemInCart = (targetId) => {
         for (let i = 0; i < State.cart.length; i++) {
             if ( i === itemIndexInCart) {
                 renderCart(State.cart[i]);
+                State.cart[i].counter = State.items[itemIndex2].counter;
+                State.items[itemIndex2].counter = 0;
             }
         }
-    //    записваем в переменную
     }
 };
 
-function RemoveItemFromCart () {
+const RemoveItemFromCart = (targetId) => {
+        let itemFotRemove = fullCard.querySelector('[data-productid ="' + targetId + '"]');
+        itemFotRemove.remove();
+};
 
-}
 
 const ShowEmptyCart = () => {
     const emptyCart = document.querySelector("#emptyCart");
@@ -207,3 +207,42 @@ const ShowEmptyCart = () => {
     (State.cart.length === 0) ? fullCard.style.display = "none" : fullCard.style.display = "block";
 };
 
+const CartCounterUpdate = (targetId, action) => {
+    const itemIndex = State.cart.findIndex(x => x.id === targetId);
+    let count = State.cart[itemIndex].counter;
+
+    const CartViewCounterUpdate = () => {
+        State.cart[itemIndex].counter = count;
+        let cartViewCounterUpdate = fullCard.querySelector('[data-productid ="' + targetId + '"] [data-count]');
+        cartViewCounterUpdate.innerHTML = count;
+    };
+
+    if (action === 'minus') {
+        console.log ('minus');
+        if (count > 0) {
+            count -= 1;
+            CartViewCounterUpdate();
+        }
+        if (count === 0) {
+            //RemoveItemFromCart();
+            State.cart[itemIndex].counter = 0;
+            RemoveItemFromCart(targetId);
+            ShowEmptyCart();
+        }
+    }
+    if (action === 'plus') {
+        console.log ('plus');
+        count += 1;
+        CartViewCounterUpdate();
+    }
+};
+
+fullCard.addEventListener('click', (event) => {
+    const Id = event.target.closest('[data-productid]').dataset.productid;
+    if (event.target.matches('[data-click="minus"]')){
+        CartCounterUpdate(parseInt(Id), 'minus');
+    }
+    if (event.target.matches('[data-click="plus"]')){
+        CartCounterUpdate(parseInt(Id), 'plus');
+    }
+});
