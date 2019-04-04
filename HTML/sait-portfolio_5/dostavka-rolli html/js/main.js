@@ -170,34 +170,27 @@ ProductsMainContainer.addEventListener('click', (e) => {
 const AddItemInCart = (targetId) => {
     const itemIndex2 = State.items.findIndex(x => x.id === targetId);
     let checkItemInCart = State.cart.includes(State.items[itemIndex2]);
-
     let itemsCounter = State.items[itemIndex2].counter;// получем количество выбранного товара
-    console.log(State.cart);
-    if (checkItemInCart && itemsCounter > 0) {
-        CartCounterUpdate (parseInt(targetId), 'plus');
-        ShowEmptyCart();
-        console.log(State.cart);
-        // return State.cart[itemIndexInCart].counter;
-    }
-    if (!checkItemInCart && itemsCounter > 0) {
+
+    if (!checkItemInCart) {
         State.cart.push(State.items[itemIndex2]);
         ShowEmptyCart();
-        const itemIndexInCart = State.cart.findIndex(x => x.id === targetId);
+        let itemIndexInCart = State.cart.findIndex(x => x.id === targetId);
         for (let i = 0; i < State.cart.length; i++) {
             if ( i === itemIndexInCart) {
                 renderCart(State.cart[i]);
-                State.cart[i].counter = State.items[itemIndex2].counter;
-                State.items[itemIndex2].counter = 0;
             }
         }
+        State.cart[itemIndexInCart].counter = 0;
     }
-};
+    let itemIndexInCart = State.cart.findIndex(x => x.id === targetId);
+    State.cart[itemIndexInCart].counter += itemsCounter;
+    let cartViewCounterUpdate = fullCard.querySelector('[data-productid ="' + targetId + '"] [data-count]');
+    console.log(State.cart[itemIndexInCart].counter);
+    cartViewCounterUpdate.innerHTML = State.cart[itemIndexInCart].counter;
 
-const RemoveItemFromCart = (targetId) => {
-        let itemFotRemove = fullCard.querySelector('[data-productid ="' + targetId + '"]');
-        itemFotRemove.remove();
+    // State.items[itemIndex2].counter = 0;
 };
-
 
 const ShowEmptyCart = () => {
     const emptyCart = document.querySelector("#emptyCart");
@@ -206,6 +199,13 @@ const ShowEmptyCart = () => {
     const fullCard = document.querySelector("#fullCard");
     (State.cart.length === 0) ? fullCard.style.display = "none" : fullCard.style.display = "block";
 };
+
+
+const RemoveItemFromCart = (targetId) => {
+        let itemFotRemove = fullCard.querySelector('[data-productid ="' + targetId + '"]');
+        itemFotRemove.remove();
+};
+
 
 const CartCounterUpdate = (targetId, action) => {
     const itemIndex = State.cart.findIndex(x => x.id === targetId);
@@ -218,20 +218,18 @@ const CartCounterUpdate = (targetId, action) => {
     };
 
     if (action === 'minus') {
-        console.log ('minus');
         if (count > 0) {
             count -= 1;
             CartViewCounterUpdate();
         }
         if (count === 0) {
-            //RemoveItemFromCart();
-            State.cart[itemIndex].counter = 0;
+            State.cart.splice(itemIndex, 1);
+
             RemoveItemFromCart(targetId);
             ShowEmptyCart();
         }
     }
     if (action === 'plus') {
-        console.log ('plus');
         count += 1;
         CartViewCounterUpdate();
     }
