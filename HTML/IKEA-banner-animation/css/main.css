@@ -1,0 +1,227 @@
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana;
+    color: #000000;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    /*width: 86%;*/
+    border: 1px solid black;
+    width: 240px;
+    height: 400px;
+    padding: 17px;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: space-between;*/
+    position: relative;
+    overflow: hidden;
+}
+
+
+/*-----------------HEADER--------------*/
+.header-slide1 {
+    position: absolute;
+    top: 17px;
+    left: 17px;
+    width: 208px;
+}
+
+.header-slide1 h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25.7px;
+}
+.header-slide2 h2 {
+    position: absolute;
+    margin: 0;
+    width: 81px;
+    height: 50px;
+    left: 22px;
+    top: 22px;
+}
+
+.header h2 p {margin: 0}
+
+.header h2 p:nth-of-type(1) {
+    font-weight: 700;
+    /* Text style for "хемнэс" */
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.33px;
+    /*line-height: 13.17px;*/
+    text-transform: uppercase;
+}
+.header h2 p:nth-of-type(2) {
+    /* Text style for "стеллаж" */
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.25px;
+    /*line-height: 13.17px;*/
+}
+
+.header h2 p:nth-of-type(3) {
+    /* Text style for "6499.-" */
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    /*line-height: 23.48px;*/
+}
+.header-slide3 {
+    position: absolute;
+    left: 38px;
+    top: 15px;
+}
+.header-slide3 h2 {
+    margin: 0;
+    width: 155px;
+    height: 96px;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 34px;
+}
+
+/*--------------CONTENT--------------*/
+.picture {
+    width: 197px;
+    height: 213px;
+}
+
+#slide1-action1,
+#slide1-action2,
+#slide1-action3 {
+    position: absolute;
+    bottom: 70px;
+}
+
+#slide2-action1 {
+    position: absolute;
+    left: 84px;
+    bottom: 76px;
+}
+
+.button {
+    position: absolute;
+    width: 176px;
+    height: 48px;
+    border-radius: 16px;
+    border: 3px solid #0051ba;
+    left: 37px;
+    top: 188px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.button:after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: 37%;
+    bottom: -20%;
+    left: -20%;
+    background: linear-gradient(to bottom, rgba(229, 224, 7, 0.25), rgb(255, 254, 4) 50%, rgba(229, 224, 7, 0.11));
+    transform: rotateZ(125deg) translate(2em, 4.5em);
+    animation: sheen 2s forwards;
+    animation-delay: 11s;
+}
+
+@keyframes sheen {
+    100% {
+        transform: rotateZ(125deg) translate(-10em, -17em);
+    }
+}
+
+.button:hover {
+    background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, red);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    /*animation: slidebg 20s linear infinite;*/
+    animation: neon2 20s linear infinite alternate;
+}
+
+
+/*@keyframes slidebg {*/
+    /*to {*/
+        /*background-position:70vw;*/
+    /*}*/
+/*}*/
+
+@keyframes neon2 {
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fffe04, 0 0 25px #228DFF, 0 0 20px #228DFF, 0 0 15px #228DFF, 0 0 10px #228DFF, 0 0 5px #228DFF;
+        background-position:70vw;
+    }
+}
+
+.button span {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 29.51px;
+}
+
+
+.copyright {
+    position: absolute;
+    line-height: unset;
+    font-size: 6.5px;
+    height: 16px;
+    width: 248px;
+    color: #545455;
+    font-weight: 400;
+    transform: rotate(-90deg);
+    bottom: 124px;
+    left: -112px;
+}
+
+/*------------FOOOTER---------------*/
+
+.logo {
+    width: 78px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-top: 24px;
+
+    position: relative;
+}
+
+
+.footer {
+    position: absolute;
+    bottom: 18px;
+    right: 17px;
+}
+.footer:after {
+    display: block;
+    content: '©';
+    position: absolute;
+    right: -6px;
+    top: 22px;
+    color: #7ba3cf;
+    font-size: 6px;
+
+
+
+
+}
+
+
+
+
+/*@media (min-width: 1140px) {*/
+    /*.container {*/
+        /*width: 1003px;*/
+    /*}*/
+/*}*/
