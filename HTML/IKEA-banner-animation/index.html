@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>IKEA Hemness</title>
-    <link rel="stylesheet"  href="css/main.css">
-    <link href="//db.onlinewebfonts.com/c/095efbb8c368b11a6b71c268ef876ab0?family=IKEA+Sans" rel="stylesheet" type="text/css"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
 <body>
@@ -14,10 +14,11 @@
 				<h1>Чего стоит сохранить покой в доме?</h1>
 			</div>
 			<div class="header-slide2" id="header-slide2">
-				<h2><p>хемнэс</p>
+				<div>
+					<p>хемнэс</p>
 					<p>стеллаж</p>
 					<p>6499.-</p>
-				</h2>
+				</div>
 			</div>
 			<div class="header-slide3" id="header-slide3">
 				<h2>Узнайте цену покоя</h2>
@@ -28,10 +29,12 @@
             <img src="img/Slide1_action2.png" alt="books" id="slide1-action2">
             <img src="img/Slide1_action3.png" alt="books" id="slide1-action3">
 			<img src="img/Slide2_action1.png" alt="Closet" id="slide2-action1">
-			<div class="button" id="button" href="#"><span>IKEA.ru</span></div>
-			<div class="highlight" id="highlight"></div>
+			<div class="button" id="button" onclick="window.location='https://www.ikea.com/ru/ru'">
+				<span>IKEA.ru</span>
+			</div>
 			<div class="copyright" id="copyright">© Inter IKEA Systems B.V.2018. ООО «ИКЕА ДОМ», Московская обл.,
-				г. Химки, мкр-н ИКЕА, корп. 1, ОГРН 1065047056348.</div>
+				г. Химки, мкр-н ИКЕА, корп. 1, ОГРН 1065047056348.
+			</div>
         </div>
         <div class="footer">
             <div class="logo">
@@ -304,6 +307,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/plugins/CSSRulePlugin.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/easing/EasePack.min.js"></script>
 
-<script src="../banner-animation/js/main.js"></script>
+<script src="js/main.js"></script>
 
 </html>

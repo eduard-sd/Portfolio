@@ -25,17 +25,15 @@ function main() {
         .set([Slide1Action3, HeaderSlide1], {autoAlpha: 0})
         .from(Slide2Action1, 2.5, {opacity: 0, left: "-200px"})
         .to(HeaderSlide2, 1.5, {autoAlpha: 1}, "-=0.8")
-        .to([Slide2Action1, HeaderSlide2], 1.5, {left: '300px', ease: Elastic.easeInOut.config(1, 0.4)})
+        .to([Slide2Action1, HeaderSlide2], 1.5, {left: '500px', ease: Elastic.easeInOut.config(1, 0.4)})
         .set([Slide1Action1, Slide1Action2, Slide1Action3, HeaderSlide1, HeaderSlide2, Slide2Action1], {
             autoAlpha: 0,
-            display: "none"
         })
         .from(HeaderSlide3, 2.5, {autoAlpha: 1, left: "-300px",ease: Back.easeInOut}, "label")
         .from(Copyright, 2.5, {autoAlpha: 1, left: "-300px"}, "label")
-        .from(Button, 2.5, {autoAlpha: 1,left: "300px",borderTopWidth:3,borderBottomWidth:3, ease:Back.easeInOut}, "label");
+        .from(Button, 2.5, {opacity: 0,autoAlpha: 1,left: "300px",borderTopWidth:3,borderBottomWidth:3, ease:Back.easeInOut}, "label");
 }
 
 window.addEventListener("load", function(event){
     main();
 });
-
