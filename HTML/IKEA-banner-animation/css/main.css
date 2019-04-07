@@ -1,6 +1,17 @@
+
 * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+html,body {
+    height: 100%;
+}
+
+@media (min-width: 1140px) {
+    html,body {
+        height: 400px;
+    }
 }
 
 body {
@@ -14,32 +25,12 @@ body {
     margin-left: auto;
     margin-right: auto;
     border: 1px solid black;
-    height: 400px;
     padding: 17px;
     position: relative;
     overflow: hidden;
+    height: 100%;
 }
 
-@media (min-width: 320px) {
-    .container{
-        height: 568px;
-    }
-}
-@media (min-width: 375px) {
-    .container{
-        height: 667px;
-    }
-}
-@media (min-width: 414px) {
-    .container{
-        height: 736px;
-    }
-}
-@media (min-width: 375px) {
-    .container{
-        height: 812px;
-    }
-}
 @media (min-width: 1140px) {
     .container{
         width: 240px;
