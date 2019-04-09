@@ -285,9 +285,6 @@ body {
     to {
         text-shadow: 0 0 20px #fff, 0 0 20px #fff, 0 0 25px #fffe04, 0 0 30px #228DFF, 0 0 25px #228DFF, 0 0 20px #228DFF, 0 0 15px #228DFF;
         background-position:70vw;
-        -webkit-transform: scale(1.05);
-            -ms-transform: scale(1.05);
-                transform: scale(1.05);
     }
 }
 
