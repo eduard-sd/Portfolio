@@ -3,7 +3,7 @@ body {
     transition: .5s all
 }
 
-body.night {
+.night {
     background-color: #000
 }
 

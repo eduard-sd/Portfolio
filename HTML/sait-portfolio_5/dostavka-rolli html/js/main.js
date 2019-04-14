@@ -35,10 +35,11 @@ const Items = [
         weight: 180,
         img: 'california-hit.jpg',
     }
-];
+],
+	  Cart = [];
 const State = {
     items : Items,
-    cart : [],
+    cart : Cart,
 };
 const ProductsMainContainer = document.querySelector('#productsMainContainer');
 
@@ -168,36 +169,38 @@ ProductsMainContainer.addEventListener('click', (e) => {
 
 /*отслеживание события нажатия на клавишу добавить в корзину */
 const AddItemInCart = (targetId) => {
+	
     const itemIndex2 = State.items.findIndex(x => x.id === targetId);
-    let checkItemInCart = State.cart.includes(State.items[itemIndex2]);
+    let checkItemInCart = Cart.includes(State.items[itemIndex2]);
     let itemsCounter = State.items[itemIndex2].counter;// получем количество выбранного товара
-
+	console.log(Cart[itemIndexInCart].counter);
+	
     if (!checkItemInCart) {
-        State.cart.push(State.items[itemIndex2]);
+        Cart.push(State.items[itemIndex2]);
         ShowEmptyCart();
-        let itemIndexInCart = State.cart.findIndex(x => x.id === targetId);
-        for (let i = 0; i < State.cart.length; i++) {
+        let itemIndexInCart = Cart.findIndex(x => x.id === targetId);
+        for (let i = 0; i < Cart.length; i++) {
             if ( i === itemIndexInCart) {
-                renderCart(State.cart[i]);
+                renderCart(Cart[i]);
             }
         }
-        State.cart[itemIndexInCart].counter = 0;
+        Cart[itemIndexInCart].counter = 0;
     }
-    let itemIndexInCart = State.cart.findIndex(x => x.id === targetId);
-    State.cart[itemIndexInCart].counter += itemsCounter;
+    let itemIndexInCart = Cart.findIndex(x => x.id === targetId);
+    Cart[itemIndexInCart].counter += itemsCounter;
     let cartViewCounterUpdate = fullCard.querySelector('[data-productid ="' + targetId + '"] [data-count]');
-    console.log(State.cart[itemIndexInCart].counter);
-    cartViewCounterUpdate.innerHTML = State.cart[itemIndexInCart].counter;
+    console.log(Cart[itemIndexInCart].counter);
+    cartViewCounterUpdate.innerHTML = Cart[itemIndexInCart].counter;
 
     // State.items[itemIndex2].counter = 0;
 };
 
 const ShowEmptyCart = () => {
     const emptyCart = document.querySelector("#emptyCart");
-    (State.cart.length === 0) ? emptyCart.style.display = "block" : emptyCart.style.display = "none";
+    (Cart.length === 0) ? emptyCart.style.display = "block" : emptyCart.style.display = "none";
 
     const fullCard = document.querySelector("#fullCard");
-    (State.cart.length === 0) ? fullCard.style.display = "none" : fullCard.style.display = "block";
+    (Cart.length === 0) ? fullCard.style.display = "none" : fullCard.style.display = "block";
 };
 
 
@@ -208,11 +211,11 @@ const RemoveItemFromCart = (targetId) => {
 
 
 const CartCounterUpdate = (targetId, action) => {
-    const itemIndex = State.cart.findIndex(x => x.id === targetId);
-    let count = State.cart[itemIndex].counter;
+    const itemIndex = Cart.findIndex(x => x.id === targetId);
+    let count = Cart[itemIndex].counter;
 
     const CartViewCounterUpdate = () => {
-        State.cart[itemIndex].counter = count;
+        Cart[itemIndex].counter = count;
         let cartViewCounterUpdate = fullCard.querySelector('[data-productid ="' + targetId + '"] [data-count]');
         cartViewCounterUpdate.innerHTML = count;
     };
@@ -223,7 +226,7 @@ const CartCounterUpdate = (targetId, action) => {
             CartViewCounterUpdate();
         }
         if (count === 0) {
-            State.cart.splice(itemIndex, 1);
+            Cart.splice(itemIndex, 1);
 
             RemoveItemFromCart(targetId);
             ShowEmptyCart();
