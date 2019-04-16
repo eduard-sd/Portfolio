@@ -79,10 +79,21 @@ const renderCart = (item) => {
     CartFull.insertAdjacentHTML("afterbegin", MarkupFullCart);
 };
 
+const TotalSum = document.querySelector('#totalprice');
+const TotalSumUpdater = () => {
+		let total =  0;
+		for(let i=0; i < CartObjects.length; i++) {
+			total += CartObjects[i].counterInCart * CartObjects[i].price;			
+		}
+		TotalSum.innerHTML = total;
+};
+
+
+
 /*обновление видимой части на странице*/
 function viewUpdate(selector, targetId, counter) {
-	let viewUpdate = selector.querySelector('[data-productid ="' + targetId + '"] [data-count]');
-	viewUpdate.innerHTML = counter;
+		let viewUpdate = selector.querySelector('[data-productid ="' + targetId + '"] [data-count]');
+		viewUpdate.innerHTML = counter;
 };
 
 /*счетчик количества товара на сранице*/
@@ -131,7 +142,8 @@ const AddItemInCart = (targetId) => {
 
 	viewUpdate (fullCard,targetId,CartObjects[itemIndexInCart].counterInCart);
     ItemsObj[itemIndex].counter = 0;
-	viewUpdate (ProductsMainContainer,targetId,ItemsObj[itemIndex].counter)
+	viewUpdate (ProductsMainContainer,targetId,ItemsObj[itemIndex].counter);
+	TotalSumUpdater();
 };
 
 //скрытие или открытие корзины
@@ -168,6 +180,8 @@ const CartCounterUpdate = (targetId, action) => {
 		CartObjects[itemIndex].counterInCart += 1;
 		viewUpdate (fullCard,targetId,CartObjects[itemIndex].counterInCart);
     }
+	
+	TotalSumUpdater();
 };
 
 /*отслеживание события в корзине */
