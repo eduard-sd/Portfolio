@@ -1,49 +1,23 @@
-const Items = [
-    {
-        id: 1,
-        title: 'Калифорния темпура',
-        counter: 0,
-        price: 300,
-        piecesInBox: 6,
-        weight: 180,
-        img: 'california-tempura.jpg',
-    },
-    {
-        id: 2,
-        title: 'Запеченый ролл «Калифорния»',
-        counter: 0,
-        price: 350,
-        piecesInBox: 6,
-        weight: 180,
-        img: 'zapech-california.jpg',
-    },
-    {
-        id: 3,
-        title: 'Филадельфия',
-        counter: 0,
-        price: 340,
-        piecesInBox: 6,
-        weight: 180,
-        img: 'philadelphia.jpg',
-    },
-    {
-        id: 4,
-        title: 'Филадельфия хит ролл',
-        counter: 0,
-        price: 330,
-        piecesInBox: 6,
-        weight: 180,
-        img: 'california-hit.jpg',
-    }
+const ItemsObj = [
+    {id: 1,title: 'Калифорния темпура',counter: 0,counterInCart: 0,price: 300,piecesInBox: 6,weight: 180,img: 'california-tempura.jpg',},
+    {id: 2,title: 'Запеченый ролл «Калифорния»',counter: 0,counterInCart: 0,price: 350,piecesInBox: 6,weight: 180,img: 'zapech-california.jpg',},
+    {id: 3,title: 'Филадельфия',counter: 0,counterInCart: 0,price: 340,piecesInBox: 6,weight: 180,img: 'philadelphia.jpg',},
+    {id: 4,title: 'Филадельфия хит ролл',counter: 0,counterInCart: 0,price: 330,piecesInBox: 6,weight: 180,img: 'california-hit.jpg',}
 ],
-	  Cart = [];
+	  CartObjects = [];
+
+
 const State = {
-    items : Items,
-    cart : Cart,
+    items : ItemsObj,
+    cart : CartObjects,
 };
-const ProductsMainContainer = document.querySelector('#productsMainContainer');
+
+/* скрытие боковой панели*/
+const fullCard = document.querySelector("#fullCard");
+fullCard.style.display = "none";
 
 /*рендеринг шаблон*/
+const ProductsMainContainer = document.querySelector('#productsMainContainer');
 const renderItem = function (item) {
     const Markup = `<div class="col-md-6">
                     <div class="card mb-4" data-productid="${item.id}">
@@ -70,11 +44,7 @@ const renderItem = function (item) {
     `;
     ProductsMainContainer.insertAdjacentHTML('beforeend', Markup);
 };
-Items.forEach(renderItem);
-
-/* скрытие боковой панели*/
-const fullCard = document.querySelector("#fullCard");
-fullCard.style.display = "none";
+ItemsObj.forEach(renderItem);
 
 /*рендеринг корзины*/
 const CartFull = document.querySelector('#cartContainer');
@@ -89,16 +59,13 @@ const renderCart = (item) => {
                 <div class="cart-item__desc">
                     <div class="cart-item__title">${item.title}</div>
                     <div class="cart-item__weight">${item.piecesInBox} шт. / ${item.weight}г.</div>
-
                     <!-- cart-item__details -->
                     <div class="cart-item__details">
-
                         <div class="items items--small">
                             <div class="items__control" data-click="minus">-</div>
                             <div class="items__current" data-count>${item.counter}</div>
                             <div class="items__control" data-click="plus">+</div>
                         </div>
-
                         <div class="price">
                             <div class="price__currency">${item.price} ₽</div>
                         </div>
@@ -112,32 +79,23 @@ const renderCart = (item) => {
     CartFull.insertAdjacentHTML("afterbegin", MarkupFullCart);
 };
 
-/*обновление количества на странице HTML*/
+/*обновление видимой части на странице*/
+function viewUpdate(selector, targetId, counter) {
+	let viewUpdate = selector.querySelector('[data-productid ="' + targetId + '"] [data-count]');
+	viewUpdate.innerHTML = counter;
+};
+
+/*счетчик количества товара на сранице*/
 const ItemCounterUpdate = function itemsUpdateCounter(targetId, act) {
-    const itemIndex = State.items.findIndex(x => x.id === targetId);
-    let count = State.items[itemIndex].counter;
+    const itemIndex = ItemsObj.findIndex(x => x.id === targetId);
 
-    const itemViewCounterUpdate = () => {
-        State.items[itemIndex].counter = count;
-        let itemViewCounterUpdate = ProductsMainContainer.querySelector('[data-productid ="' + targetId + '"] [data-count]');
-        itemViewCounterUpdate.innerHTML = count;
-    };
-    const setCounterZero = () => {
-        State.items[itemIndex].counter = 0;
-        let itemViewCounterUpdate = ProductsMainContainer.querySelector('[data-productid ="' + targetId + '"] [data-count]');
-        itemViewCounterUpdate.innerHTML = 0;
-    };
-
-    if (act === 'minus' && count > 0) {
-        count -= 1;
-        itemViewCounterUpdate();
+    if (act === 'minus' && ItemsObj[itemIndex].counter > 0) {
+        ItemsObj[itemIndex].counter -= 1;
+		viewUpdate (ProductsMainContainer,targetId,ItemsObj[itemIndex].counter);
     }
     if (act === 'plus') {
-        count += 1;
-        itemViewCounterUpdate();
-    }
-    if (act === 'button') {
-        setCounterZero();
+        ItemsObj[itemIndex].counter += 1;
+		viewUpdate (ProductsMainContainer,targetId,ItemsObj[itemIndex].counter);
     }
 };
 
@@ -146,100 +104,75 @@ ProductsMainContainer.addEventListener('click', (e) => {
     const Id = e.target.closest('[data-productid]').dataset.productid;
     if (e.target.matches('[data-click="minus"]')){
         ItemCounterUpdate(parseInt(Id), 'minus');
-
     }
     if (e.target.matches('[data-click="plus"]')){
         ItemCounterUpdate(parseInt(Id), 'plus');
     }
-
     if (e.target.matches('#addToCartButton')){
         let state = AddItemInCart(parseInt(Id));
-        //передать count в корзину
-
-        ItemCounterUpdate(parseInt(Id), 'button');
     }
 });
 
 
-// 1 не павильно добавляет количество
-// 2 дублирует карточки ролов  решение удаление всего дочернего элемента или вставка по индексу если элемент уже вставлен
-// 3 удаление
-// 4 обновлять количество в корзине
-// 5 обнулять количество после нажания кнопку
-
 /*отслеживание события нажатия на клавишу добавить в корзину */
 const AddItemInCart = (targetId) => {
-	
-    const itemIndex2 = State.items.findIndex(x => x.id === targetId);
-    let checkItemInCart = Cart.includes(State.items[itemIndex2]);
-    let itemsCounter = State.items[itemIndex2].counter;// получем количество выбранного товара
-	console.log(Cart[itemIndexInCart].counter);
-	
-    if (!checkItemInCart) {
-        Cart.push(State.items[itemIndex2]);
+    let itemIndex = ItemsObj.findIndex(x => x.id === targetId);
+    let checkItemInCart = CartObjects.includes(ItemsObj[itemIndex]);
+ 
+	if (!checkItemInCart && ItemsObj[itemIndex].counter > 0) {
+        CartObjects.push(ItemsObj[itemIndex]);
         ShowEmptyCart();
-        let itemIndexInCart = Cart.findIndex(x => x.id === targetId);
-        for (let i = 0; i < Cart.length; i++) {
-            if ( i === itemIndexInCart) {
-                renderCart(Cart[i]);
-            }
-        }
-        Cart[itemIndexInCart].counter = 0;
+		let itemIndexInCart = CartObjects.findIndex(x => x.id === targetId);
+		renderCart(CartObjects[itemIndexInCart]);
     }
-    let itemIndexInCart = Cart.findIndex(x => x.id === targetId);
-    Cart[itemIndexInCart].counter += itemsCounter;
-    let cartViewCounterUpdate = fullCard.querySelector('[data-productid ="' + targetId + '"] [data-count]');
-    console.log(Cart[itemIndexInCart].counter);
-    cartViewCounterUpdate.innerHTML = Cart[itemIndexInCart].counter;
+	
+	let itemIndexInCart = CartObjects.findIndex(x => x.id === targetId);
+    CartObjects[itemIndexInCart].counterInCart += ItemsObj[itemIndex].counter;
 
-    // State.items[itemIndex2].counter = 0;
+	viewUpdate (fullCard,targetId,CartObjects[itemIndexInCart].counterInCart);
+    ItemsObj[itemIndex].counter = 0;
+	viewUpdate (ProductsMainContainer,targetId,ItemsObj[itemIndex].counter)
 };
 
+//скрытие или открытие корзины
 const ShowEmptyCart = () => {
     const emptyCart = document.querySelector("#emptyCart");
-    (Cart.length === 0) ? emptyCart.style.display = "block" : emptyCart.style.display = "none";
+    (CartObjects.length === 0) ? emptyCart.style.display = "block" : emptyCart.style.display = "none";
 
     const fullCard = document.querySelector("#fullCard");
-    (Cart.length === 0) ? fullCard.style.display = "none" : fullCard.style.display = "block";
+    (CartObjects.length === 0) ? fullCard.style.display = "none" : fullCard.style.display = "block";
 };
 
 
-const RemoveItemFromCart = (targetId) => {
-        let itemFotRemove = fullCard.querySelector('[data-productid ="' + targetId + '"]');
-        itemFotRemove.remove();
-};
 
-
+/*счетчик количества товара в корзине*/
 const CartCounterUpdate = (targetId, action) => {
-    const itemIndex = Cart.findIndex(x => x.id === targetId);
-    let count = Cart[itemIndex].counter;
-
-    const CartViewCounterUpdate = () => {
-        Cart[itemIndex].counter = count;
-        let cartViewCounterUpdate = fullCard.querySelector('[data-productid ="' + targetId + '"] [data-count]');
-        cartViewCounterUpdate.innerHTML = count;
-    };
-
+    const itemIndex = CartObjects.findIndex(x => x.id === targetId);	
+	//удаление из корзины видимого элемента
+	const RemoveItemFromCart = (targetId) => {
+			let itemFotRemove = fullCard.querySelector('[data-productid ="' + targetId + '"]');
+			itemFotRemove.remove();
+	};
     if (action === 'minus') {
-        if (count > 0) {
-            count -= 1;
-            CartViewCounterUpdate();
+        if (CartObjects[itemIndex].counterInCart > 0) {
+            CartObjects[itemIndex].counterInCart -= 1;
+			viewUpdate (fullCard,targetId,CartObjects[itemIndex].counterInCart);
         }
-        if (count === 0) {
-            Cart.splice(itemIndex, 1);
-
+        if (CartObjects[itemIndex].counterInCart === 0) {
+            CartObjects.splice(itemIndex, 1);
             RemoveItemFromCart(targetId);
             ShowEmptyCart();
         }
     }
     if (action === 'plus') {
-        count += 1;
-        CartViewCounterUpdate();
+		CartObjects[itemIndex].counterInCart += 1;
+		viewUpdate (fullCard,targetId,CartObjects[itemIndex].counterInCart);
     }
 };
 
+/*отслеживание события в корзине */
 fullCard.addEventListener('click', (event) => {
-    const Id = event.target.closest('[data-productid]').dataset.productid;
+   const Id = event.target.closest('[data-productid]').dataset.productid;
     if (event.target.matches('[data-click="minus"]')){
         CartCounterUpdate(parseInt(Id), 'minus');
     }
