@@ -83,8 +83,8 @@ more.addEventListener('click', ()=> {
     for (let i = 0; i < data[0].length ; i++) {
         let card = document.createElement('a');
         card.classList.add('videos__item', 'videos__item-active');
-        card.setAttribute('data-url',data[3][i])
-        card.innerHTML = `
+        card.setAttribute('data-url',data[3][i]);
+        card.insertAdjacentHTML('afterbegin',`
             <img src="${data[0][i]}" alt="thumb">
             <div class="videos__item-descr">
                 ${data[1][i]}                        
@@ -92,11 +92,29 @@ more.addEventListener('click', ()=> {
             <div class="videos__item-views">
                     ${data[2][i]}
             </div>
-        `;
+        `);
         videosWrapper.appendChild(card);
 
         setTimeout(() => { //callback function
             card.classList.remove('videos__item-active');
         }, 10);
     }
+
+    let button = document.createElement('button');
+    button.classList.add('more');
+    button.innerText = 'Загрузить еще';
+    videosWrapper.appendChild(button);
+
+    slice('.videos__item-descr',100);//обрезание title
 }) ;
+
+function slice(selector, count) {
+    document.querySelectorAll(selector).forEach(item => {
+        item.textContent.trim();
+        if (item.textContent.length > count+1) {
+            item.textContent = item.textContent.slice(0, 101).trim() + "...";
+        }
+    })
+
+}
+
