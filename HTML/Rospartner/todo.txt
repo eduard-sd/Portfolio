@@ -1,0 +1,3 @@
+todo	
+1 if field is not empty show line in input boxes
+2 менять цвет с синего на беж если в поле есть текст 

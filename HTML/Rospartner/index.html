@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 
 	<!-- fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Ubuntu:400,400i,500,500i&amp;subset=cyrillic" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,500,500i&amp;subset=cyrillic" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i" rel="stylesheet">
 
 </head>
@@ -28,41 +28,44 @@
 	    </div>
 	    <div class="form__input-fields">
 	    	<div class="form__input-fields-row1">
-	    		<label for="workgroup">Название группы</label>
-	    		<input class="form__input-undeline" type="text" id="workgroup">
+	    		<label for="workgroup" class="form__input-labels">Название группы</label>
+	    		<input class="form__input-underline" type="text" id="workgroup" placeholder="Введите полное название группы" pattern="^[А-Яа-яЁё\s]+$">
 	    	</div>
 			<div class="form__input-fields-row1">
-				<label for="alias">Алиас</label>
-	    		<input class="form__input-undeline" type="text" id="alias">
+				<label for="alias" class="form__input-labels">Алиас</label>
+	    		<input class="form__input-underline" type="text" id="alias" placeholder="Введите алиас" pattern="[^А-Яа-яЁё\s]+$">
 			</div>
 			<div class="form__input-fields-row1">
-				<label for="email">Электронная почта для обращений</label>
-	    		<input  class="form__input-undeline" type="email" id="email">
+				<label for="email" class="form__input-labels">Электронная почта для обращений</label>
+	    		<input  class="form__input-underline" type="email" id="email" placeholder="Введите электронную почту" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
 			</div>
 			<div class="form__input-fields-row1">
-				<label for="phonenumber">Телефон представителя</label>
-	    		<input class="form__input-undeline" type="phone" id="phonenumber">
+				<label for="phonenumber" class="form__input-labels">Телефон представителя</label>
+	    		<input class="form__input-underline" type="tel" id="phonenumber" placeholder="+7 (XXX) XXX-XX-XX" pattern="[\+]\d{1}\s[\(]\d{3}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}" minlength="18" maxlength="18" />
 			</div>
 			<div class="form__input-fields-row1">
-				<label for="name">ФИО представителя</label>
-	    		<input class="form__input-undeline" type="text" id="name">
+				<label for="name" class="form__input-labels">ФИО представителя</label>
+	    		<input class="form__input-underline" type="text" id="name" placeholder="Введите полные данные представителя" pattern="^[А-Яа-яЁё\s]+$">
 			</div>
 			<div class="form__input-fields-row1">
-				<label for="post">Должность ответственного</label>
-	    		<input class="form__input-undeline" type="text" id="post">
+				<label for="post" class="form__input-labels">Должность ответственного</label>
+	    		<input class="form__input-underline" type="text" id="post" placeholder="Введите полное наименование должности" pattern="^[А-Яа-яЁё\s]+$">
 			</div>	
 	    </div>
     	<div class="form__input-fields-row2">
-	    	<label for="workgroup-domestic">Описание рабочей группы для внутреннего использования</label>
-    		<textarea name="workgroup-domestic" class="form__input-undeline" id="workgroup-domestic" cols="30" rows="5"></textarea>
+	    	<label for="workgroup-domestic" class="form__input-labels">Описание рабочей группы для внутреннего использования</label>
+    		<textarea name="workgroup-domestic" class="form__input-underline" id="workgroup-domestic" cols="30" rows="5" placeholder="Введите подробное описание группы"></textarea>
     	</div>
-    	<p class="form__input-fields-row2-checkbox">
-    		<input type="checkbox" id="checkbox">
-    		<label for="checkbox">Публичное описание отличается от внутреннего</label>
-    	</p>
+    	<div class="form__input-checkbox">
+    		<label class="form__input-checkbox-row2" for="checkbox">
+    			<input type="checkbox" id="checkbox">
+    			<span class="form__input-checkbox-text">Публичное описание отличается от внутреннего</span>
+    			<span class="form__input-checkbox-new"></span>
+    		</label>
+    	</div>
     	<div class="form__input-fields-row2">
-    		<label for="workgroup-general">Публичное описание рабочей группы</label>
-    		<textarea name="workgroup-general" class="form__input-undeline" id="workgroup-general" 	cols="30" rows="5"></textarea>
+    		<label for="workgroup-general" class="form__input-labels">Публичное описание рабочей группы</label>
+    		<textarea name="workgroup-general" class="form__input-underline" id="workgroup-general" 	cols="30" rows="5" placeholder="Введите краткое и емкое описание"></textarea>
     	</div>
 	    <div class="form__input-fields-row3">
 	    	<input type="submit" value="Отправить на модерацию" class="form__button-submit">
