@@ -26,36 +26,45 @@
 					<path d="M2.00137 17.0075H17.0614C18.6014 17.0075 19.5614 15.3375 18.7914 14.0075L11.2614 0.9975C10.4914 -0.3325 8.57137 -0.3325 7.80137 0.9975L0.271371 14.0075C-0.498629 15.3375 0.461371 17.0075 2.00137 17.0075ZM9.53137 10.0075C8.98137 10.0075 8.53137 9.5575 8.53137 9.0075V7.0075C8.53137 6.4575 8.98137 6.0075 9.53137 6.0075C10.0814 6.0075 10.5314 6.4575 10.5314 7.0075V9.0075C10.5314 9.5575 10.0814 10.0075 9.53137 10.0075ZM10.5314 14.0075H8.53137V12.0075H10.5314V14.0075Z" fill="#CFC799"/>
 			</svg>
 	    </div>
+
 	    <div class="form__input-fields">
 	    	<div class="form__input-fields-row1">
 	    		<label for="workgroup" class="form__input-labels">Название группы</label>
-	    		<input class="form__input-underline" type="text" id="workgroup" placeholder="Введите полное название группы" pattern="^[А-Яа-яЁё\s]+$">
+	    		<input class="form__input-underline" type="text" id="workgroup" placeholder="Введите полное название группы" pattern="^[А-Яа-яЁё\s]+$" required>
+	    		<span>Название может содержать русские буквы и пробелы</span>
 	    	</div>
 			<div class="form__input-fields-row1">
 				<label for="alias" class="form__input-labels">Алиас</label>
-	    		<input class="form__input-underline" type="text" id="alias" placeholder="Введите алиас" pattern="[^А-Яа-яЁё\s]+$">
+	    		<input class="form__input-underline" type="text" id="alias" placeholder="Введите алиас" pattern="[^А-Яа-яЁё\s]+$" required>
+	    		<span>Алиас не может содержать русские буквы и пробелы</span>
 			</div>
 			<div class="form__input-fields-row1">
 				<label for="email" class="form__input-labels">Электронная почта для обращений</label>
-	    		<input  class="form__input-underline" type="email" id="email" placeholder="Введите электронную почту" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+	    		<input  class="form__input-underline" type="email" id="email" placeholder="Введите электронную почту" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+	    		<span>Введите корректный адрес электронной почты</span>
 			</div>
 			<div class="form__input-fields-row1">
 				<label for="phonenumber" class="form__input-labels">Телефон представителя</label>
-	    		<input class="form__input-underline" type="tel" id="phonenumber" placeholder="+7 (XXX) XXX-XX-XX" pattern="[\+]\d{1}\s[\(]\d{3}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}" minlength="18" maxlength="18" />
+	    		<input class="form__input-underline" type="tel" id="phonenumber" placeholder="+7 (XXX) XXX-XX-XX" pattern="[\+]\d{1}\s[\(]\d{3}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}" minlength="18" maxlength="18" required>
+	    		<span>Введите номер в формате +7 (XXX) XXX-XX-XX</span>
 			</div>
 			<div class="form__input-fields-row1">
 				<label for="name" class="form__input-labels">ФИО представителя</label>
-	    		<input class="form__input-underline" type="text" id="name" placeholder="Введите полные данные представителя" pattern="^[А-Яа-яЁё\s]+$">
+	    		<input class="form__input-underline" type="text" id="name" placeholder="Введите полные данные представителя" pattern="^[А-Яа-яЁё\s]+$" required>
+	    		<span>Название может содержать русские буквы и пробелы</span>
 			</div>
 			<div class="form__input-fields-row1">
 				<label for="post" class="form__input-labels">Должность ответственного</label>
-	    		<input class="form__input-underline" type="text" id="post" placeholder="Введите полное наименование должности" pattern="^[А-Яа-яЁё\s]+$">
+	    		<input class="form__input-underline" type="text" id="post" placeholder="Введите полное наименование должности" pattern="^[А-Яа-яЁё\s]+$" required>
+	    		<span>Название может содержать русские буквы и пробелы</span>
 			</div>	
 	    </div>
-    	<div class="form__input-fields-row2">
-	    	<label for="workgroup-domestic" class="form__input-labels">Описание рабочей группы для внутреннего использования</label>
-    		<textarea name="workgroup-domestic" class="form__input-underline" id="workgroup-domestic" cols="30" rows="5" placeholder="Введите подробное описание группы"></textarea>
+
+    	<div class="form__input-fields-row2 form__input-work-group-domestic">
+	    	<label for="work-group-domestic" class="form__input-labels-textarea" data-productid>Описание рабочей группы для внутреннего использования</label>
+    		<textarea name="work-group-domestic" class="form__input-textarea" id="work-group-domestic" cols="30" rows="5" placeholder="Введите подробное описание группы" required></textarea>
     	</div>
+
     	<div class="form__input-checkbox">
     		<label class="form__input-checkbox-row2" for="checkbox">
     			<input type="checkbox" id="checkbox">
@@ -63,9 +72,10 @@
     			<span class="form__input-checkbox-new"></span>
     		</label>
     	</div>
-    	<div class="form__input-fields-row2">
-    		<label for="workgroup-general" class="form__input-labels">Публичное описание рабочей группы</label>
-    		<textarea name="workgroup-general" class="form__input-underline" id="workgroup-general" 	cols="30" rows="5" placeholder="Введите краткое и емкое описание"></textarea>
+
+    	<div class="form__input-fields-row2 form__input-work-group-public">
+    		<label for="work-group-public" class="form__input-labels-textarea" data-productid>Публичное описание рабочей группы</label>
+    		<textarea name="work-group-public" class="form__input-textarea" id="work-group-public" 	cols="30" rows="5" placeholder="Введите краткое и емкое описание" required></textarea>
     	</div>
 	    <div class="form__input-fields-row3">
 	    	<input type="submit" value="Отправить на модерацию" class="form__button-submit">
@@ -73,7 +83,8 @@
 	    	<input type="submit" value="Сохранить в мои черновики" class="form__button-saveform">
 	    </div>		
 	</form>
-</div>		
+</div>
+<script src="js/main.js"></script>		
 </body>
 </html>
-	
+
