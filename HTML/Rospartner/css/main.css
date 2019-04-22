@@ -74,21 +74,12 @@ a { text-decoration: none; }
 	position: absolute;
 	width: 473px;
 	height: 90px;
-	left: -573px;
+	left: -1000px;
 	top: 233px;
 	background: rgba(251, 217, 44, 0.16);
 	border-radius: 0px 4px 4px 0px;
-	animation: attentionMove 2s ease-in;
 	display: none;
-}
-
-@keyframes attentionMove {
-    from {left: -573px;}
-    to {left: -100px;}
-}
-@keyframes attentionMoveReverse {
-    from {left: -100px;}
-    to {left: -573px;}
+	opacity: 0;
 }
 
 .form__attention h4 {
@@ -165,22 +156,6 @@ a { text-decoration: none; }
 }
 
 
-.form__input-fields {
-	animation: attentionNeedSpace 2s ease-in;
-	animation: attentionNeedSpaceReverse 2s ease-in;
-}
-
-@keyframes attentionNeedSpace {
-    from {margin-top: 20px}
-    to {margin-top: 130px;}
-}
-
-@keyframes attentionNeedSpaceReverse {
-    from {margin-top: 130px}
-    to {margin-top: 20px;}
-}
-
-
 .form__input-fields-row1,
 .form__input-fields-row2 {
 	position: relative;
@@ -253,6 +228,7 @@ a { text-decoration: none; }
 	background: #F8F7FA;
 	border-radius: 2px;
 	border: none;
+	resize: none;
 }
 
 .form__input-checkbox {
