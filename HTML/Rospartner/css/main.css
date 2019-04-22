@@ -142,9 +142,8 @@ a { text-decoration: none; }
 	border-radius: 2px;
 	z-index: 1;
 }
-/* ==============================================================
-класс для JS
-==============================================================*/
+
+
 .form__input-fields-row1-invalid {
 	margin-top: 20px;
 	padding: 2px 2px 2px;
@@ -249,7 +248,7 @@ a { text-decoration: none; }
 
 .form__input-work-group-public {display: none;}
 
-.form__input-fields-row2 textarea  {	
+.form__input-textarea  {	
 	height: 122px;
 	background: #F8F7FA;
 	border-radius: 2px;
@@ -446,7 +445,7 @@ a { text-decoration: none; }
 }
 .form__input-fields-row1 .form__input-underline:focus {
 	background: linear-gradient(to right, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)) 4px calc(100% - 7px)/calc(100% - 8px) 1px no-repeat;
-	background-color: #F8F7FA;
+	background-color: #FFFFFF;
 	border: 2px solid rgba(47, 128, 237, 0.75);
 	border-radius: 2px;
 }
@@ -457,9 +456,6 @@ a { text-decoration: none; }
 	border-radius: 2px;
 }
 
-/*========================================================================
-на js + если поле не введено не верно нужно добавить стиль к input
-===========================================================================*/
 .form__input-underline-invalid {
 	background: linear-gradient(to right, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)) 4px calc(100% - 7px)/calc(100% - 8px) 1px no-repeat;
 	background-color: #F8F7FA;
@@ -473,23 +469,10 @@ a { text-decoration: none; }
 	border-radius: 2px;
 }
 
-.form__input-labels:focus {
-	color: #2F80ED;
-}
 
-.form__input-labels:invalid {
-	color: #F64C4C;
-}
+/*.form__input-labels-focus {color: #2F80ED;}*/
 
-/*===============================================================================
-на js - если form__input-textarea в фокусе добавить border-top к label{
-	.form__input-labels{border-top: 2px solid rgba(47, 128, 237, 0.75);}
-}
 
-на js - если form__input-textarea в ховере добавить background-color к label{
-	.form__input-labels{background: #F1F5F9;}
-}
-===============================================================================*/
 .form__input-textarea:valid {
 	background-image: linear-gradient(#F8F7FA, #F8F7FA 18px, #000 28px, #000 28px, #F8F7FA 18px);
     background-size: 100% 19px;
@@ -512,4 +495,3 @@ a { text-decoration: none; }
 	background: #F1F5F9;
 	border-radius: 2px;
 }
-
