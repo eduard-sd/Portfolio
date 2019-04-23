@@ -30,39 +30,39 @@
 	    <div class="form__input-fields">
 	    	<div class="form__input-fields-row1 form__input-first-input-child">
 	    		<label for="workgroup" class="form__input-labels" id="label-workgroup">Название группы</label>
-	    		<input class="form__input-underline" type="text" id="workgroup" placeholder="Введите полное название группы" pattern="^[А-Яа-яЁё\s]+$" required>
+	    		<input class="form__input-underline" type="text" id="workgroup" placeholder="Введите полное название группы" pattern="^[А-Яа-яЁё\s]+$">
 	    		<span>Название может содержать русские буквы и пробелы</span>
 	    	</div>
 			<div class="form__input-fields-row1">
 				<label for="alias" class="form__input-labels" id="label-alias">Алиас</label>
-	    		<input class="form__input-underline" type="text" id="alias" placeholder="Введите алиас" pattern="[^А-Яа-яЁё\s]+$" required>
+	    		<input class="form__input-underline" type="text" id="alias" placeholder="Введите алиас" pattern="[^А-Яа-яЁё\s]+$">
 	    		<span>Алиас не может содержать русские буквы и пробелы</span>
 			</div>
 			<div class="form__input-fields-row1">
 				<label for="email" class="form__input-labels" id="label-email">Электронная почта для обращений</label>
-	    		<input  class="form__input-underline" type="email" id="email" placeholder="Введите электронную почту" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+	    		<input  class="form__input-underline" type="email" id="email" placeholder="Введите электронную почту" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$">
 	    		<span>Введите корректный адрес электронной почты</span>
 			</div>
 			<div class="form__input-fields-row1">
 				<label for="phonenumber" class="form__input-labels" id="label-phonenumber">Телефон представителя</label>
-	    		<input class="form__input-underline" type="tel" id="phonenumber" placeholder="+7 (XXX) XXX-XX-XX" pattern="[\+]\d{1}\s[\(]\d{3}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}" minlength="18" maxlength="18" required>
+	    		<input class="form__input-underline" type="tel" id="phonenumber" placeholder="+7 (XXX) XXX-XX-XX" pattern="[\+]\d{1}\s[\(]\d{3}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}" minlength="18" maxlength="18">
 	    		<span>Введите номер в формате +7 (XXX) XXX-XX-XX</span>
 			</div>
 			<div class="form__input-fields-row1">
 				<label for="name" class="form__input-labels" id="label-name">ФИО представителя</label>
-	    		<input class="form__input-underline" type="text" id="name" placeholder="Введите полные данные представителя" pattern="^[А-Яа-яЁё\s]+$" required>
+	    		<input class="form__input-underline" type="text" id="name" placeholder="Введите полные данные представителя" pattern="^[А-Яа-яЁё\s]+$">
 	    		<span>Название может содержать русские буквы и пробелы</span>
 			</div>
 			<div class="form__input-fields-row1">
 				<label for="post" class="form__input-labels" id="label-post">Должность ответственного</label>
-	    		<input class="form__input-underline" type="text" id="post" placeholder="Введите полное наименование должности" pattern="^[А-Яа-яЁё\s]+$" required>
+	    		<input class="form__input-underline" type="text" id="post" placeholder="Введите полное наименование должности" pattern="^[А-Яа-яЁё\s]+$">
 	    		<span>Название может содержать русские буквы и пробелы</span>
 			</div>	
 	    </div>
 
     	<div class="form__input-fields-row2 form__input-work-group-domestic">
 	    	<label for="work-group-domestic" class="form__input-labels-textarea" id="label-domestic" data-productid>Описание рабочей группы для внутреннего использования</label>
-    		<textarea name="work-group-domestic" class="form__input-textarea" id="work-group-domestic" cols="30" rows="5" placeholder="Введите подробное описание группы" required></textarea>
+    		<textarea name="work-group-domestic" class="form__input-textarea" id="work-group-domestic" cols="30" rows="5" placeholder="Введите подробное описание группы"></textarea>
     	</div>
 
     	<div class="form__input-checkbox">
@@ -75,13 +75,13 @@
 
     	<div class="form__input-fields-row2 form__input-work-group-public">
     		<label for="work-group-public" class="form__input-labels-textarea" id="label-public" data-productid>Публичное описание рабочей группы</label>
-    		<textarea name="work-group-public" class="form__input-textarea" id="work-group-public" 	cols="30" rows="5" placeholder="Введите краткое и емкое описание" required></textarea>
+    		<textarea name="work-group-public" class="form__input-textarea" id="work-group-public" 	cols="30" rows="5" placeholder="Введите краткое и емкое описание"></textarea>
     	</div>
 
 	    <div class="form__input-fields-row3">
-	    	<input type="submit" value="Отправить на модерацию" class="form__button-submit">
+	    	<input type="submit" value="Отправить на модерацию" class="form__button-submit" disabled>
 	    	<input type="reset" value="Отмена" class="form__button-reset">
-	    	<input type="submit" value="Сохранить в мои черновики" class="form__button-saveform">
+	    	<input type="button" value="Сохранить в мои черновики" class="form__button-saveform" disabled>
 	    </div>
 	</form>
 </div>

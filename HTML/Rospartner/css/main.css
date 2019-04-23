@@ -363,11 +363,14 @@ a { text-decoration: none; }
 .form__button-saveform:active {
 	background: #C4C4C4;
 	border-radius: 2px;
+	border-color: #C4C4C4;
 }
 .form__button-reset:disabled,
 .form__button-saveform:disabled  {
-	background: #C4C4C4;
+	background: rgb(225,225,225);
 	border-radius: 2px;
+	color: rgb(153,153,153);
+	cursor: default;
 }
 
 .form__button-submit:hover {
@@ -379,17 +382,19 @@ a { text-decoration: none; }
 .form__button-submit:focus {
 	outline: none;
 	background: #2F80ED;
-	border: 2px solid rgba(47, 128, 237, 0.5);
+	border: 2px solid rgb(151,191,246);
 	border-radius: 2px;
 }
 
 .form__button-submit:active {
 	background: #236ACB;
 	border-radius: 2px;
+	border-color: #236ACB;
 }
 .form__button-submit:disabled {
-	background: #236ACB;
-	border-radius: 2px;
+	background: #91b4e5;
+	color: #ffffff;
+	cursor: default;
 }
 
 .form__input-underline,
@@ -426,27 +431,27 @@ a { text-decoration: none; }
 	border-radius: 2px;
 }
 
+/*.form__input-fields-row1 .form__input-underline:focus ~ .form__input-labels {*/
+    /*color: #2F80ED;*/
+/*}*/
+
+
 .form__input-underline:hover,
 .form__input-underline:active {
 	background: #F1F5F9;
 	border-radius: 2px;
 }
 
-.form__input-underline-invalid {
+.form__input-underline:invalid {
 	background: linear-gradient(to right, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)) 4px calc(100% - 7px)/calc(100% - 8px) 1px no-repeat;
 	background-color: #F8F7FA;
 }
-/*=========================================================================
-на js + добавить отступ к textarea и убрать после вывода предупреждения о заполнение валидации 
-=============================================================================*/
+
 .form__input-underline:invalid ~ .form__input-fields-row1 {
 	background: #F5BCBC;
 	border: 2px solid #F5BCBC;
 	border-radius: 2px;
 }
-
-
-/*.form__input-labels-focus {color: #2F80ED;}*/
 
 
 .form__input-textarea:valid {
