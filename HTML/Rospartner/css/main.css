@@ -25,7 +25,7 @@ a { text-decoration: none; }
 	margin-right: auto;
 	padding-top: 80px;
 	padding-bottom: 158px;
-	position: relative;		
+	position: relative;
 }
 
 .container__head h1 {
@@ -50,13 +50,13 @@ a { text-decoration: none; }
 	position: absolute;
 	width: 16px;
 	height: 2px;
-    left: -19px;
-    top: 7px;
+	left: -19px;
+	top: 7px;
 
 	background: #F19932;
 	border-radius: 2px;
 }
-.form { 
+.form {
 	margin-top: 32px;
 }
 
@@ -166,7 +166,7 @@ a { text-decoration: none; }
 	height: 50px;
 	left: 100px;
 	top: 343px;
-    border: none;
+	border: none;
 	background: #F8F7FA;
 	border-radius: 2px;
 	z-index: 50;
@@ -194,12 +194,12 @@ a { text-decoration: none; }
 	line-height: normal;
 	color: #000000;
 	cursor: pointer;
-    background: #F8F7FA;
-    /*background: red;*/
-    height: 25px;
-    padding-top: 8px;
-    padding-left: 10px;
-    padding-right: 10px;
+	background: #F8F7FA;
+	/*background: red;*/
+	height: 25px;
+	padding-top: 8px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 
@@ -217,13 +217,13 @@ a { text-decoration: none; }
 
 .form__input-fields-row2 {
 	display: flex;
-    flex-direction: column; 
+	flex-direction: column;
 	margin-top: 20px;
 }
 
 .form__input-work-group-public {display: none;}
 
-.form__input-textarea  {	
+.form__input-textarea  {
 	height: 122px;
 	background: #F8F7FA;
 	border-radius: 2px;
@@ -248,7 +248,7 @@ a { text-decoration: none; }
 
 .form__input-checkbox-text {
 	margin-left: 26px;
-	cursor: pointer; 
+	cursor: pointer;
 	font-family: Roboto;
 	font-style: normal;
 	font-weight: normal;
@@ -265,39 +265,39 @@ a { text-decoration: none; }
 	border: 2px solid #333333;
 	background-color: #fff;
 	margin: 0;
-	cursor: pointer; 
+	cursor: pointer;
 	position: absolute;
 	left: 0;
 	top: 0;
 	transition: 0.2s ease-in;
 }
 .form__input-checkbox-row2 input:checked ~ .form__input-checkbox-new {
-  background-color: #3C8AFB;
-  border: 2px solid #3C8AFB;
-  transition: 0.2s ease-in;
+	background-color: #3C8AFB;
+	border: 2px solid #3C8AFB;
+	transition: 0.2s ease-in;
 }
 .form__input-checkbox-row2 input:checked ~ .form__input-checkbox-new:after {
-    content: "";
-    position: absolute;
+	content: "";
+	position: absolute;
 	left: 3px;
-    top: -1px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    transform: rotate(45deg);
-    transition: 0.2s ease-in;
+	top: -1px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	transform: rotate(45deg);
+	transition: 0.2s ease-in;
 }
 
 
-.form__input-fields-row3 {	
+.form__input-fields-row3 {
 	display: flex;
 	width: 100%;
 	flex-wrap: wrap;
 	margin-top: 32px;
 }
 
-.form__button-submit {	
+.form__button-submit {
 	width: 216px;
 	height: 45px;
 	border: none;
@@ -311,15 +311,15 @@ a { text-decoration: none; }
 	cursor: pointer;
 }
 
-.form__button-reset {	
+.form__button-reset {
 	width: 92px;
 	height: 45px;
 	background: #E9E9E9;
 	border-radius: 2px;
 	margin-left: 20px;
-    border: none;
+	border: none;
 	font-family: Ubuntu;
-    font-weight: 500;
+	font-weight: 500;
 	font-size: 14px;
 	line-height: normal;
 	color: #333333;
@@ -328,14 +328,14 @@ a { text-decoration: none; }
 
 .form__button-saveform {
 	align-self: flex-end;
-	justify-content: flex-end; 
+	justify-content: flex-end;
 	margin-left: auto;
 
 	width: 231px;
 	height: 45px;
 	background: #E9E9E9;
 	border-radius: 2px;
-    border: none;
+	border: none;
 	font-family: Ubuntu;
 	font-weight: 500;
 	font-size: 14px;
@@ -452,19 +452,19 @@ a { text-decoration: none; }
 
 .form__input-textarea:valid {
 	background-image: linear-gradient(#F8F7FA, #F8F7FA 18px, #000 28px, #000 28px, #F8F7FA 18px);
-    background-size: 100% 19px;
-    line-height: 18px;
-    border-radius: 2px;
-    background-position: bottom;
+	background-size: 100% 19px;
+	line-height: 18px;
+	border-radius: 2px;
+	background-position: bottom;
 }
 
 .form__input-textarea:focus {
 	background-image: linear-gradient(#F8F7FA, #F8F7FA 18px, #000 28px, #000 28px, #F8F7FA 18px);
-    background-size: 100% 19px;
-    line-height: 18px;
-    border: 2px solid rgba(47, 128, 237, 0.75);
-    border-radius: 2px;
-    background-position: bottom;
+	background-size: 100% 19px;
+	line-height: 18px;
+	border: 2px solid rgba(47, 128, 237, 0.75);
+	border-radius: 2px;
+	background-position: bottom;
 }
 
 .form__input-textarea:hover,
@@ -472,3 +472,4 @@ a { text-decoration: none; }
 	background: #F1F5F9;
 	border-radius: 2px;
 }
+

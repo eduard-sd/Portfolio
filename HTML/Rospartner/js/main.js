@@ -1,12 +1,12 @@
 const formList = document.querySelectorAll('.form__input-underline, .form textarea'), //elements
-	  checkbox = document.querySelector('#checkbox'),
-	  workGroupPublic = document.querySelector('.form__input-work-group-public'),
-	  alertDiv = document.querySelector('.form__attention'),
-	  inputFieldsContainer = document.querySelector('.form__input-fields'),
-	  saveButton = document.querySelector('.form__button-saveform'),
-	  resetButton = document.querySelector('.form__button-reset'),
-	  submitButton = document.querySelector('.form__button-submit'),
-	  inputList = document.querySelectorAll('.form__input-underline');
+	checkbox = document.querySelector('#checkbox'),
+	workGroupPublic = document.querySelector('.form__input-work-group-public'),
+	alertDiv = document.querySelector('.form__attention'),
+	inputFieldsContainer = document.querySelector('.form__input-fields'),
+	saveButton = document.querySelector('.form__button-saveform'),
+	resetButton = document.querySelector('.form__button-reset'),
+	submitButton = document.querySelector('.form__button-submit'),
+	inputList = document.querySelectorAll('.form__input-underline');
 
 
 
@@ -137,7 +137,7 @@ function checkRefresh() {
 		event.preventDefault();
 		alertAnimation(false); 	// disapier alert animation
 		formList.forEach(function(element) {
-				//place for some future code
+			//place for some future code
 		});
 	};
 
@@ -188,7 +188,6 @@ tempWithTextarea.forEach((el) => {
 	const textarea = childrens[1];
 
 	textarea.onmouseover = (e) => {
-		console.log('textarea.onmouseover');
 		textarea.classList.add('hovered');
 
 		if (textarea.classList.contains('focused')) return;
@@ -224,7 +223,6 @@ tempWithTextarea.forEach((el) => {
 			label.style.backgroundColor = "#f1f5f9";
 			label.style.color = "#000000";
 		} else {
-			console.log('here');
 			label.style.cssText = `borderTop: ""; background-color: "";`;
 		}
 
@@ -243,7 +241,8 @@ tempWithTextarea.forEach((el) => {
 	};
 
 	label.onmouseover = (e) => {
-		console.log('label.onmouseover');
+		textarea.classList.add('hovered');
+
 		if (textarea.classList.contains('focused')) {
 			label.style.background = '#FFFFFF';
 			return;
@@ -252,6 +251,8 @@ tempWithTextarea.forEach((el) => {
 	};
 
 	label.onmouseout = (e) => {
+		textarea.classList.remove('hovered');
+
 		if (textarea.classList.contains('focused')) {
 			label.style.background = '#FFFFFF';
 			return;
