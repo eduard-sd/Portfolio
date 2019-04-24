@@ -1,42 +1,60 @@
 const formList = document.querySelectorAll('.form__input-underline, .form textarea'), //elements
 	  checkbox = document.querySelector('#checkbox'),
 	  workGroupPublic = document.querySelector('.form__input-work-group-public'),
-	  workGroupTextarea = document.querySelectorAll('.form__input-textarea'),
-	  labelsTextarea = document.querySelectorAll('.form__input-labels-textarea'),
 	  alertDiv = document.querySelector('.form__attention'),
-	  inputFields = document.querySelector('.form__input-fields'),
+	  inputFieldsContainer = document.querySelector('.form__input-fields'),
 	  saveButton = document.querySelector('.form__button-saveform'),
 	  resetButton = document.querySelector('.form__button-reset'),
 	  submitButton = document.querySelector('.form__button-submit'),
-	  buttonsContainer = document.querySelectorAll('.form__input-fields-row3');
+	  inputList = document.querySelectorAll('.form__input-underline');
 
 
 
 function checkRefresh() {
-	let alertVisabilty = true;
 	Object.keys(sessionStorage).forEach(function(key){
 		let curentInput = document.querySelector("#"+`${key}`);
 		curentInput.value = sessionStorage.getItem(key);  // Восстанавливаем содержимое текстового поля
 	});
 
+	const validInput = () => {
+		let booleanList = [];
+		inputList.forEach(function(element){
+			if (element.checkValidity() === true && element.value.length > 0) {
+				booleanList.push(true);
+			} else {
+				booleanList.push(false);
+			}
+		});
+		return booleanList.includes(false);
+	};
+
 	const checkFields = (element) => {
-		console.log(element, element.previousElementSibling, element.previousElementSibling.id);
 		let parentDiv = element.parentElement,
 			label = element.previousElementSibling.id,
 			labelSelector = document.querySelector('#'+label);
 
-		if (!element.checkValidity()) {
-			parentDiv.classList.add('form__input-fields-row1-invalid');
-			labelSelector.style.color = '#F64C4C';
+		if (sessionStorage.length > 0) {
+			saveButton.removeAttribute("disabled");
+			if (!element.checkValidity()) {
+				parentDiv.classList.add('form__input-fields-row1-invalid');
+				labelSelector.style.color = '#F64C4C';
+			}
+			if (element.checkValidity()) {
+				parentDiv.classList.remove('form__input-fields-row1-invalid');
+				labelSelector.style.color = 'rgba(0, 0, 0, 0.5)';
+			}
+		}
 
-		}
-		if (element.checkValidity()) {
-			parentDiv.classList.remove('form__input-fields-row1-invalid');
-			labelSelector.style.color = 'rgba(0, 0, 0, 0.5)';
-		}
 		if (element.value.length === 0) {
 			parentDiv.classList.remove('form__input-fields-row1-invalid');
 			labelSelector.style.color = '#000000';
+		}
+
+		if (validInput()) {
+			saveButton.setAttribute("disabled",true);
+			submitButton.setAttribute("disabled",true);
+		} else if (!validInput()) {
+			submitButton.removeAttribute("disabled");
 		}
 	};
 
@@ -45,25 +63,12 @@ function checkRefresh() {
 			sessionStorage.setItem(`${element.id}`, element.value);
 			checkFields(element);
 
-			if (sessionStorage.length > 0) {
-				saveButton.removeAttribute("disabled");
-				submitButton.removeAttribute("disabled");
-			}
-
 			if (element.value.length === 0) {
 				sessionStorage.removeItem(element.id);
-				saveButton.setAttribute("disabled",true);
-				submitButton.setAttribute("disabled",true);
 			}
 		});
-
-		element.addEventListener('click', function() {
-
-		});
-
 		checkFields(element);
 	});
-
 
 	const alertAnimation = (event) => {
 		if (event) {
@@ -83,7 +88,7 @@ function checkRefresh() {
 
 					alertDiv.style.left = alertPos + "px";
 					alertDiv.style.opacity = opacityAlert;
-					inputFields.style.marginTop = inputFieldsPos+"px";
+					inputFieldsContainer.style.marginTop = inputFieldsPos+"px";
 				}
 			}
 			alertVisabilty = false;
@@ -92,7 +97,7 @@ function checkRefresh() {
 			let alertPos = -100,
 				animate = setInterval(moveLeft, 10),
 				opacityAlert = 1,
-				inputFieldsPos = 90;
+				inputFieldsPos = 110;
 
 			function moveLeft() { // animation for alertDiv
 				if (alertPos <= -1000) {
@@ -104,35 +109,29 @@ function checkRefresh() {
 
 					alertDiv.style.left = alertPos + "px";
 					alertDiv.style.opacity = opacityAlert;
-					inputFields.style.marginTop = inputFieldsPos+"px";
+					inputFieldsContainer.style.marginTop = inputFieldsPos+"px";
 				}
-
 			}
 			alertVisabilty = true;
 		}
 	};
 
 	if (sessionStorage.length > 0) {
-		alertAnimation(alertVisabilty);
-		saveButton.removeAttribute("disabled");
-		submitButton.removeAttribute("disabled");
+		alertAnimation(true);
+		// checkFields(element);
+		// saveButton.removeAttribute("disabled");
+		// submitButton.removeAttribute("disabled");
 	}
 
 	submitButton.onclick = function (event) {
 		event.preventDefault();
-
 		alertAnimation(false);
 		formList.forEach(function(element) {
-			checkFields(element);
-			if (element.checkValidity() && element.value.length >= 0){
 				//очистить поля
-			}
 		});
-
 	};
 
 	resetButton.onclick = function () {
-		console.log(1);
 		saveButton.setAttribute("disabled",true);
 		submitButton.setAttribute("disabled",true);
 
@@ -144,7 +143,6 @@ function checkRefresh() {
 			checkFields(element);
 		});
 		// openBox();
-
 	};
 }
 
@@ -167,6 +165,8 @@ let box = true;
 checkbox.addEventListener('change', () => {openBox()});
 
 
+
+
 const tempWithTextarea = document.querySelectorAll('.form__input-fields-row2');
 
 tempWithTextarea.forEach((el) => {
@@ -175,6 +175,7 @@ tempWithTextarea.forEach((el) => {
 	const textarea = childrens[1];
 
 	textarea.onmouseover = (e) => {
+		console.log('textarea.onmouseover');
 		textarea.classList.add('hovered');
 
 		if (textarea.classList.contains('focused')) return;
@@ -195,18 +196,20 @@ tempWithTextarea.forEach((el) => {
 			'					background-color: #FFFFFF; color: #2F80ED;' ;
 
 		textarea.style.cssText = 'background-image: linear-gradient(#FFFFFF, #FFFFFF 18px, #000 28px, #000 28px, #FFFFFF 18px);\n' +
-								'    background-size: 100% 19px;\n' +
-								'    background-color: #FFFFFF;' +
-								'	 background-position: 50% 100%;' +
-								'	 border: 2px solid rgba(47, 128, 237, 0.75)';
+			'    background-size: 100% 19px;\n' +
+			'    background-color: #FFFFFF;' +
+			'	 background-position: 50% 100%;' +
+			'	 border: 2px solid rgba(47, 128, 237, 0.75)';
 
 		textarea.classList.add('focused');
 	};
 
 	textarea.onblur = (e) => {
-		console.log(textarea.classList);
+
 		if(textarea.classList.contains('hovered')) {
-			label.style.cssText = `borderTop: ""; background-color: #f1f5f9; color: #000000;`
+			label.style.borderTop = "";
+			label.style.backgroundColor = "#f1f5f9";
+			label.style.color = "#000000";
 		} else {
 			console.log('here');
 			label.style.cssText = `borderTop: ""; background-color: "";`;
@@ -227,6 +230,7 @@ tempWithTextarea.forEach((el) => {
 	};
 
 	label.onmouseover = (e) => {
+		console.log('label.onmouseover');
 		if (textarea.classList.contains('focused')) {
 			label.style.background = '#FFFFFF';
 			return;
@@ -240,5 +244,33 @@ tempWithTextarea.forEach((el) => {
 			return;
 		}
 		label.style.background = '';
+	}
+});
+
+const tempWithInput = document.querySelectorAll('.form__input-fields-row1');
+
+tempWithInput.forEach(function (element) {
+	const childrens = element.children;
+	const label = childrens[0];
+	const input = childrens[1];
+
+	input.onfocus = (e) => {
+		label.style.color = "#2F80ED";
+	};
+
+	input.onblur = (e) => {
+		if (input.value.length) {
+			label.style.cssText = `borderTop: ""; background-color: ""; color: rgba(0, 0, 0, 0.5);`;
+		} else {
+			label.style.color = "";
+		}
+	};
+
+	input.onmouseover = (e) => {
+		input.style.background = '#f1f5f9';
+	};
+
+	input.onmouseout = (e) => {
+		input.style.background = '';
 	}
 });
