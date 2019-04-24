@@ -11,11 +11,13 @@ const formList = document.querySelectorAll('.form__input-underline, .form textar
 
 
 function checkRefresh() {
+	//shows input values after reload page
 	Object.keys(sessionStorage).forEach(function(key){
 		let curentInput = document.querySelector("#"+`${key}`);
 		curentInput.value = sessionStorage.getItem(key);  // Восстанавливаем содержимое текстового поля
 	});
 
+	//checking all input fields for existing text and html patterns
 	const validInput = () => {
 		let booleanList = [];
 		inputList.forEach(function(element){
@@ -28,6 +30,9 @@ function checkRefresh() {
 		return booleanList.includes(false);
 	};
 
+
+	//checking field css styles
+	//make visible buttons
 	const checkFields = (element) => {
 		let parentDiv = element.parentElement,
 			label = element.previousElementSibling.id,
@@ -58,6 +63,8 @@ function checkRefresh() {
 		}
 	};
 
+	//adding all input values in sessionStorage
+	//cleening all inputs from storage
 	formList.forEach(function(element){
 		element.addEventListener('change', function() {
 			sessionStorage.setItem(`${element.id}`, element.value);
@@ -70,6 +77,7 @@ function checkRefresh() {
 		checkFields(element);
 	});
 
+	//alert animation function
 	const alertAnimation = (event) => {
 		if (event) {
 			alertDiv.style.display = 'block';
@@ -116,21 +124,24 @@ function checkRefresh() {
 		}
 	};
 
+
+	//alert animation comes on reload page
 	if (sessionStorage.length > 0) {
 		alertAnimation(true);
-		// checkFields(element);
-		// saveButton.removeAttribute("disabled");
-		// submitButton.removeAttribute("disabled");
 	}
 
+	//submit button shows animation
+	//should be visible after validation
+	//after click stil can cleen all fields
 	submitButton.onclick = function (event) {
 		event.preventDefault();
-		alertAnimation(false);
+		alertAnimation(false); 	// disapier alert animation
 		formList.forEach(function(element) {
-				//очистить поля
+				//place for some future code
 		});
 	};
 
+	//reset button clean everything in form
 	resetButton.onclick = function () {
 		saveButton.setAttribute("disabled",true);
 		submitButton.setAttribute("disabled",true);
@@ -142,7 +153,6 @@ function checkRefresh() {
 			element.value = "";
 			checkFields(element);
 		});
-		// openBox();
 	};
 }
 
@@ -167,6 +177,9 @@ checkbox.addEventListener('change', () => {openBox()});
 
 
 
+//changing color of textarea fields on focus and hover
+//and
+//changing color of textarea label on focus and hover
 const tempWithTextarea = document.querySelectorAll('.form__input-fields-row2');
 
 tempWithTextarea.forEach((el) => {
@@ -247,6 +260,10 @@ tempWithTextarea.forEach((el) => {
 	}
 });
 
+
+
+
+//changing color of input fields on focus and hover
 const tempWithInput = document.querySelectorAll('.form__input-fields-row1');
 
 tempWithInput.forEach(function (element) {

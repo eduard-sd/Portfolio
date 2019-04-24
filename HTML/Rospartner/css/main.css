@@ -431,10 +431,6 @@ a { text-decoration: none; }
 	border-radius: 2px;
 }
 
-/*.form__input-fields-row1 .form__input-underline:focus ~ .form__input-labels {*/
-    /*color: #2F80ED;*/
-/*}*/
-
 
 .form__input-underline:hover,
 .form__input-underline:active {
