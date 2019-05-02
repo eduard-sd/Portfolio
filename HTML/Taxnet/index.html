@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
+    <!--Native CSS-->
+    <link rel="stylesheet" href="css/main.css">
+
     <title>Hello, world!</title>
   </head>
   <body>
@@ -30,149 +33,59 @@
             <div class="row justify-content-center mt-4">
               <form class="form-inline">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
               </form>
             </div>
-            <div class="row justify-content-center mt-4">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1">Роботы</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                <label class="form-check-label" for="inlineCheckbox2">Боевик</label>
-              </div>
+
+            <!--категории-->
+            <div class="row justify-content-center mt-4" id="movie-tags">
+              <!--рендоринг тегов-->
             </div>
+
+            <!--фильмы-->
             <div class="row flex-column mt-4">
-              <div class="accordion" id="accordionExample">
-                  <div class="card">
-                    <div class="card-header" id="headingOne">
-                      <h5 class="mb-0 d-flex justify-content-between">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          Разворачиваемая панель #1
-                        </button>
-                        <div class="icons">                        
-                          <i class="far fa-star"></i>
-                          <i class="fas fa-star"></i>
-                        </div>
-                      </h5>
-                    </div>
-
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                      <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="card">
-                    <div class="card-header" id="headingTwo">
-                      <h5 class="mb-0 d-flex justify-content-between">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                          Разворачиваемая панель #2
-                        </button>
-                        <div class="icons">                        
-                          <i class="far fa-star"></i>
-                          <i class="fas fa-star"></i>
-                        </div>
-                      </h5>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                      <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card">
-                    <div class="card-header" id="headingThree">
-                      <h5 class="mb-0 d-flex justify-content-between">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                          Разворачиваемая панель #3
-                        </button>
-                        <div class="icons">                        
-                          <i class="far fa-star"></i>
-                          <i class="fas fa-star"></i>
-                        </div>
-                      </h5>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                      <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                      </div>
-                    </div>
-                  </div>
+              <div class="accordion" id="accordionFilm">
+                <!--рендоринг карточек-->
               </div>
             </div>
+
             <div class="row justify-content-center mt-4">
-              <button type="button" class="btn btn-primary btn-mg">Показать еще</button>
+              <button type="button" class="btn btn-primary btn-mg" id="movie-button">Показать еще</button>
             </div>
           </div>
 
+
+          <!--закладки-->
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> 
             <div class="row flex-column mt-4">
-              <div class="accordion" id="accordionExample">
+              <div class="accordion" id="accordionFavorite">
+
                   <div class="card">
-                    <div class="card-header" id="headingOne">
+                    <div class="card-header" id="headingFavorite">
                       <h5 class="mb-0 d-flex justify-content-between">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFavorite" aria-expanded="true" aria-controls="collapseOne">
                           Разворачиваемая панель #1
                         </button>
-                        <div class="icons">                        
-                          <i class="far fa-star"></i>
-                          <i class="fas fa-star"></i>
-                        </div>
+                        <label class="icons" for="card__icons-checkbox_id">
+                          <input type="checkbox" class="card__icons-checkbox" id="card__icons-checkbox_id">
+                          <i class="far fa-star card__checkbox-unchecked"></i>
+                          <i class="fas fa-star card__checkbox-checked"></i>
+                        </label>
                       </h5>
                     </div>
 
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div id="collapseFavorite" class="collapse show" aria-labelledby="headingFavorite" data-parent="#accordionFavorite">
                       <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="card">
-                    <div class="card-header" id="headingTwo">
-                      <h5 class="mb-0 d-flex justify-content-between">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                          Разворачиваемая панель #2
-                        </button>
-                        <div class="icons">                        
-                          <i class="far fa-star"></i>
-                          <i class="fas fa-star"></i>
-                        </div>
-                      </h5>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                      <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        Абзац описания фильма
                       </div>
                     </div>
                   </div>
 
-                  <div class="card">
-                    <div class="card-header" id="headingThree">
-                      <h5 class="mb-0 d-flex justify-content-between">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                          Разворачиваемая панель #3
-                        </button>
-                        <div class="icons">                        
-                          <i class="far fa-star"></i>
-                          <i class="fas fa-star"></i>
-                        </div>
-                      </h5>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                      <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                      </div>
-                    </div>
-                  </div>
               </div>
             </div>
+
             <div class="row justify-content-center mt-4">
-              <button type="button" class="btn btn-primary btn-mg">Показать еще</button>
+              <button type="button" class="btn btn-primary btn-mg" id="favorite-button">Показать еще</button>
             </div>
           </div>
         </div>

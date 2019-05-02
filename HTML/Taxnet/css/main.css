@@ -1,0 +1,33 @@
+.card__icons-checkbox {
+    display: none;
+}
+
+.icons {
+    cursor: pointer;
+    line-height: unset;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 1.5rem;
+}
+
+.card__icons-checkbox ~ .card__checkbox-unchecked {
+    display: block;
+    color: #007bff;
+}
+
+.card__icons-checkbox ~ .card__checkbox-checked {
+    display: none;
+}
+
+.card__icons-checkbox:checked ~ .card__checkbox-unchecked {
+    display: none;
+}
+
+.card__icons-checkbox:checked ~ .card__checkbox-checked {
+    display: block;
+    color: #007bff;
+}
+
+.collapse, .card-header, #accordionFilm .card {
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
