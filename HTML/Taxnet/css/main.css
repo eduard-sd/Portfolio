@@ -10,22 +10,14 @@
     font-size: 1.5rem;
 }
 
-.card__icons-checkbox ~ .card__checkbox-unchecked {
+.card__icons-checkbox:checked ~ .card__checkbox {
     display: block;
     color: #007bff;
 }
 
-.card__icons-checkbox ~ .card__checkbox-checked {
-    display: none;
-}
-
-.card__icons-checkbox:checked ~ .card__checkbox-unchecked {
-    display: none;
-}
-
-.card__icons-checkbox:checked ~ .card__checkbox-checked {
+.card__icons-checkbox ~ .card__checkbox {
     display: block;
-    color: #007bff;
+    color: #000000;
 }
 
 .collapse, .card-header, #accordionFilm .card {
