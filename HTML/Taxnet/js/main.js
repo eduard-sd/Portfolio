@@ -16,51 +16,55 @@ const setFavoriteList = (key, obj) => {
     return localStorage.setItem(key, sObj);
 };
 
-if (getFavoriteList().length > 0) {
-    favoriteVisibleMoviesList = getFavoriteList();
-}
 
+try {
+    if (getFavoriteList().length > 0) {
+        favoriteVisibleMoviesList = getFavoriteList();
+    }
+} catch(e) {
+    console.log(e);
+}
 
 const addVisibleMovies = () => {
     const movieJson =  'js/jsons/films.json';
 
-    const data =(path) => {
-        return fetch(path)
-            .then(res => res.json())
-            .then(posts => console.log(posts))
-    };
-
-    for (let i = moviesOnPageCount; i < moviesOnPageCount+15 ; i++) {
-        visibleMoviesList.push(
-            {
-                id : i,
-                title: data[i].title,
-                tags: data[i].tags,
-                favorite: false,
-            }
-        );
-        renderFilm(visibleMoviesList[i]);
-    }
-    moviesOnPageCount += 15; // счетчик для вывода фильмов
-
-
-    // async function main2 (path) {
-    //     const responce = await fetch(path);
-    //     data = await responce.json();
-    //     for (let i = moviesOnPageCount; i < moviesOnPageCount+15 ; i++) {
-    //         visibleMoviesList.push(
-    //             {
-    //                 id : i,
-    //                 title: data[i].title,
-    //                 tags: data[i].tags,
-    //                 favorite: false,
-    //             }
-    //         );
-    //         renderFilm(visibleMoviesList[i]);
-    //     }
-    //     moviesOnPageCount += 15; // === 8 потому что старт с 0
+    // const data =(path) => {
+    //     return fetch(path)
+    //         .then(res => res.json())
+    //         .then(posts => console.log(posts))
     // };
-    data(movieJson); // заполняем новый лист обьектами с id
+    //
+    // for (let i = moviesOnPageCount; i < moviesOnPageCount+15 ; i++) {
+    //     visibleMoviesList.push(
+    //         {
+    //             id : i,
+    //             title: data[i].title,
+    //             tags: data[i].tags,
+    //             favorite: false,
+    //         }
+    //     );
+    //     renderFilm(visibleMoviesList[i]);
+    // }
+    // moviesOnPageCount += 15; // счетчик для вывода фильмов
+
+
+    async function main2 (path) {
+        const responce = await fetch(path);
+        data = await responce.json();
+        for (let i = moviesOnPageCount; i < moviesOnPageCount+15 ; i++) {
+            visibleMoviesList.push(
+                {
+                    id : i,
+                    title: data[i].title,
+                    tags: data[i].tags,
+                    favorite: false,
+                }
+            );
+            renderFilm(visibleMoviesList[i]);
+        }
+        moviesOnPageCount += 15; // === 8 потому что старт с 0
+    };
+    main2(movieJson); // заполняем новый лист обьектами с id
 
     //рендарим обьекты на страници из личта
     const accordionFilm = document.querySelector("#accordionFilm");
@@ -88,17 +92,20 @@ const addVisibleMovies = () => {
         accordionFilm.insertAdjacentHTML('beforeend', film);
     };
 
-    // если в favoriteVisibleMoviesList.length > 0 то для каждого обекта находим копию в visibleMoviesList и ставим checked
-    if (getFavoriteList().length > 0){
-        for (let i = 0; i < favoriteVisibleMoviesList.length; i++) {
-            let idFavorite = favoriteVisibleMoviesList[i].id;
-            console.log(visibleMoviesList);
+    try {
+        // если в favoriteVisibleMoviesList.length > 0 то для каждого обекта находим копию в visibleMoviesList и ставим checked
+        if (getFavoriteList().length > 0) {
+            for (let i = 0; i < favoriteVisibleMoviesList.length; i++) {
+                let idFavorite = favoriteVisibleMoviesList[i].id;
+                console.log(visibleMoviesList);
 
-            let itemIndex = visibleMoviesList.findIndex(x => x.id === idFavorite);
-            visibleMoviesList[itemIndex].favorite = true;
-            let itemMakeChecked = accordionFilm.querySelector('"#card__icons-checkbox-' + idFavorite + '"').checked = true;
+                let itemIndex = visibleMoviesList.findIndex(x => x.id === idFavorite);
+                visibleMoviesList[itemIndex].favorite = true;
+                let itemMakeChecked = accordionFilm.querySelector('"#card__icons-checkbox-' + idFavorite + '"').checked = true;
+            }
         }
-    }
+    } catch(e) {console.log(e)}
+    
 }; // показать на странице фильмы
 
 const addVisibleTags = () => {
