@@ -7,7 +7,10 @@ const mainMovieField = document.querySelectorAll("#accordionFilm");
 const accordionFavorite = document.querySelector("#accordionFavorite");
 const favoriteTab = document.querySelector("#profile-tab");
 const MOVIE_URL =  'js/jsons/films.json';
-
+let searchMatchesList = [];
+let tagsFilter = [];
+let tagsFilterResult = [];
+const tagsSelector = document.querySelector("#movie-tags");
 
 
 const getFavoriteList = () => {
@@ -31,7 +34,6 @@ const addVisibleMovies = () => {
     //рендарим обьекты на страници из лиcта
     const accordionFilm = document.querySelector("#accordionFilm");
     const renderFilm = function (item) {
-        console.log('here');
         const  film = `<div class="card" data-movieid="${item.id}">
                     <div class="card-header" id="heading-film-id">
                       <h5 class="mb-0 d-flex justify-content-between">
@@ -85,7 +87,7 @@ const addVisibleTags = () => {
                 {
                     id : i,
                     title: data[i],
-                    checked: false,
+                    checked: true,
                 }
             );
             renderTags(tagsArray[i]);
@@ -94,12 +96,10 @@ const addVisibleTags = () => {
 
     main2(tagsJson); // заполняем новый лист обьектами с id
 
-    //рендарим обьекты на страници из личта
-    const tagsSelector = document.querySelector("#movie-tags");
+    //рендарим обьекты на странице из листа
     const renderTags = function (item) {
-        console.log('here');
         const tags = `<div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox-${item.id}" value="option1">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox-${item.id}" data-id="${item.id}" value="option1">
                             <label class="form-check-label" for="inlineCheckbox-${item.id}">${item.title}</label>
                        </div>`;
         tagsSelector.insertAdjacentHTML('beforeend', tags);
@@ -161,15 +161,7 @@ checkRefresh = async () => {
     movieButton.onclick = () => { // + 15 видео по кнопке
         addVisibleMovies();
     };
-
     addVisibleTags(); // рендори тэги
-
-    const tagsArray = document.querySelectorAll("#movie-tags");
-    tagsArray.forEach((elem) => {
-        elem.onclick = () => {
-            const Id = elem.getAttribute('datatype');
-        }
-    });
 
     mainMovieField.forEach((elem) => {
         elem.addEventListener('change', function (event){
@@ -201,7 +193,73 @@ checkRefresh = async () => {
                 addVisibleFavorite(id);
             }
         }
-    }
+    };
+
+    const searchButton = document.querySelector('.form-inline button');
+    const searchInput = document.querySelector('.form-inline input');
+
+    searchButton.onclick = () => {
+        searchMatchesList = [];
+        for (let i = 0; i < visibleMoviesList.length; i++) {
+            let titleLowCase = visibleMoviesList[i].title.toLowerCase();
+            let searchLowCase = searchInput.value.trim().toLowerCase();
+
+            let word = '';
+            for (let j = 0; j < searchLowCase.length; j++) {
+                if(searchLowCase.charAt(j) === titleLowCase.charAt(j)){
+                    word += searchLowCase.charAt(j);
+                } else {
+                    j = searchLowCase.length;
+                    word = '';
+                }
+            }
+
+            console.log(word);
+            if(word === searchLowCase) {
+                searchMatchesList.push(visibleMoviesList[i]) // :TODO добавить .id чтоб сравнивать по id
+            }
+        }
+        return searchMatchesList;
+    };
+
+    const tagsSelectorList = document.querySelectorAll("#movie-tags");
+    tagsSelectorList.forEach((elem) => {
+        elem.addEventListener('change', function (event){
+            const dataId = event.target.closest('[data-id]').dataset.id;
+            const id = parseInt(dataId);
+
+            if (tagsArray[id].checked) {
+                tagsFilter.push(tagsArray[id].title);
+                tagsArray[id].checked = false;
+
+            } else if (!tagsArray[id].checked) {
+                let itemIndex = tagsFilter.indexOf(tagsArray[id].title);
+                tagsFilter.splice(itemIndex,itemIndex+1);
+                tagsArray[id].checked = true;
+            }
+
+            tagsFilterResult = [];
+            for (let i = 0; i < visibleMoviesList.length; i++) {
+                let movieTagsList = visibleMoviesList[i].tags;
+                let list = [];
+                for (let j = 0; j < tagsFilter.length; j++) {
+                    if(movieTagsList.includes(tagsFilter[j])){
+                        list.push(tagsFilter[j]);
+                    } else {
+                        j = tagsFilter.length;
+                        list = [];
+                    }
+                }
+
+                console.log(list);
+                if(list.length > 0) {
+                    tagsFilterResult.push(visibleMoviesList[i]) // :TODO добавить .id чтоб сравнивать по id
+                }
+            }
+            return tagsFilterResult;
+
+        })
+    });
 
 };
 
