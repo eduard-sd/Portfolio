@@ -1,17 +1,17 @@
 const movieButton = document.querySelector("#movie-button");
-const tagsSelector = document.querySelector("#movie-tags");
-const mainMovieField = document.querySelectorAll("#accordionFilm");
-const accordionFavorite = document.querySelector("#accordionFavorite");
-const favoriteTab = document.querySelector("#profile-tab");
-const MOVIE_URL =  'js/jsons/films.json';
-const tagsArray = [];
-const visibleMoviesList = [];
-let favoriteVisibleMoviesList = [];
-let searchMatchesList = [];
-let tagsFilter = [];
-let tagsFilterResult = [];
-let moviesOnPageCount = 0;
-let filteredMovieList = [];
+      tagsSelector = document.querySelector("#movie-tags"),
+      mainMovieField = document.querySelectorAll("#accordionFilm"),
+      accordionFavorite = document.querySelector("#accordionFavorite"),
+      favoriteTab = document.querySelector("#profile-tab"),
+      MOVIE_URL =  'js/jsons/films.json',
+      tagsArray = [],
+      visibleMoviesList = [];
+let favoriteVisibleMoviesList = [],
+    searchMatchesList = [],
+    tagsFilter = [],
+    tagsFilterResult = [],
+    buttonBool = false,
+    filteredMovieList = [];
 
 
 
@@ -22,8 +22,6 @@ const setFavoriteList = (key, obj) => {
     let sObj = JSON.stringify(obj);
     return localStorage.setItem(key, sObj);
 };
-
-
 try {
     if (getFavoriteList().length > 0) {
         favoriteVisibleMoviesList = getFavoriteList();
@@ -51,28 +49,34 @@ const addVisibleMovies = (list) => {
 
                     <div id="collapse-film-${item.id}" class="collapse" aria-labelledby="heading-film-${item.id}" data-parent="#accordionFilm">
                       <div class="card-body" data-description="">
-                        Абзац описания фильма
+                        Абзац описания фильма: ${item.tags}
                       </div>
                     </div>
                   </div>`;
         accordionFilm.insertAdjacentHTML('beforeend', film);
     };
 
-    if (list === visibleMoviesList) {
+    const loadMore = (list) => { //работа с количество вывода на странице и с кнопкой
         let moviesOnPage = accordionFilm.children.length;
-
-        for (let i = moviesOnPage; i < moviesOnPage + 15; i++) { //:todo сделать загрузку поциями по кнопке по
-            renderFilm(list[i]);
+        let moviesAtAll = list.length;
+        let result = moviesAtAll - moviesOnPage;
+        if (result >= 15) {
+            result = 15;
         }
 
-    } else if (list === filteredMovieList){
+        result > 0 ? movieButton.style.display = 'block' : movieButton.style.display = 'none';
 
-
-        for (let i = 0; i < filteredMovieList.length; i++) {
-            const itemIndex = visibleMoviesList.findIndex(x => x.id === filteredMovieList[i]);
-            renderFilm(visibleMoviesList[itemIndex]);
+        for (let i = moviesOnPage; i < moviesOnPage + result; i++) {
+            if (list === visibleMoviesList) {
+                renderFilm(list[i]);
+            } else {
+                const itemIndex = visibleMoviesList.findIndex(x => x.id === filteredMovieList[i]);
+                renderFilm(visibleMoviesList[itemIndex]);
+            }
         }
-    }
+
+    };
+    loadMore(list);
 
     try {
         // если в favoriteVisibleMoviesList.length > 0 то для каждого обекта находим копию в visibleMoviesList и ставим checked
@@ -170,36 +174,35 @@ const compareFilters = (list1,list2) => {
     if (list1.length > 0 && list2.length > 0) {
         filteredMovieList = list1.filter(value => -1 !== list2.indexOf(value));
     } else if (list1.length === 0 && list2.length > 0) {
-        // for (let i = 0; i <list2.length ; i++) {
-        //     filteredMovieList.push(list2[i]);
-        // }
         filteredMovieList = list2.slice();
-        console.log(filteredMovieList);
-
     } else if (list2.length === 0 && list1.length > 0) {
-        // for (let i = 0; i <list1.length ; i++) {
-        //     filteredMovieList.push(list1[i]);
-        // }
         filteredMovieList = list1.slice();
-        console.log(filteredMovieList);
     }
 
     accordionFilm.remove();
+    buttonBool = true;
 
     const movieContainer = document.querySelector('#movie-container');
     const accordionElement = `<div class="accordion" id="accordionFilm"></div>`;
     movieContainer.insertAdjacentHTML('afterbegin', accordionElement);
 
-    addVisibleMovies(filteredMovieList);
+    if (filteredMovieList.length === 0) {
+        buttonBool = false;
+        addVisibleMovies(visibleMoviesList);
+    } else {
+        addVisibleMovies(filteredMovieList);
+    }
 };
 
 
 checkRefresh = async () => {
     await loadMovies(MOVIE_URL); //создаем список обьектов из json
     addVisibleMovies(visibleMoviesList); // рендорим на странице
-    movieButton.onclick = () => { // + 15 видео по кнопке
-        addVisibleMovies(visibleMoviesList);
+
+    movieButton.onclick = () => { // + 15 видео по кнопке если false то filteredMovieList если true то visibleMoviesList
+        buttonBool ? addVisibleMovies(filteredMovieList) : addVisibleMovies(visibleMoviesList);
     };
+
     addVisibleTags(); // рендори тэги
 
     mainMovieField.forEach((elem) => {
@@ -297,9 +300,6 @@ checkRefresh = async () => {
             compareFilters (searchMatchesList,tagsFilterResult);
         })
     });
-
-
-
 };
 
 window.onbeforeunload = checkRefresh(); // в момент загрузки мы рендорим строки с  фильмами
