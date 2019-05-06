@@ -1,4 +1,7 @@
-const movieButton = document.querySelector("#movie-button");
+const movieButton = document.querySelector("#movie-button"),
+      favoriteButton = document.querySelector("#favorite-button"),
+      searchButton = document.querySelector('.form-inline button'),
+      searchInput = document.querySelector('.form-inline input'),
       tagsSelector = document.querySelector("#movie-tags"),
       mainMovieField = document.querySelectorAll("#accordionFilm"),
       accordionFavorite = document.querySelector("#accordionFavorite"),
@@ -121,7 +124,7 @@ const addVisibleTags = () => {
     };
 }; // показать на странице тэги
 const addVisibleFavorite = (targetId) => {
-    //рендарим обьекты на страници из личта
+    //рендарим обьекты на страници из листа
     const renderFavorite = function (item) {
         const  film = `<div class="card" data-movieid="${item.id}">
                     <div class="card-header" id="heading-film-id">
@@ -169,14 +172,16 @@ async function loadMovies (path) {
         );
     }
 };
-const compareFilters = (list1,list2) => {
+const compareFilters = (search,tags) => {
     filteredMovieList = [];
-    if (list1.length > 0 && list2.length > 0) {
-        filteredMovieList = list1.filter(value => -1 !== list2.indexOf(value));
-    } else if (list1.length === 0 && list2.length > 0) {
-        filteredMovieList = list2.slice();
-    } else if (list2.length === 0 && list1.length > 0) {
-        filteredMovieList = list1.slice();
+    if (search.length > 0 && tags.length > 0) {
+        filteredMovieList = search.filter(value => -1 !== tags.indexOf(value));
+    } else if (search.length === 0 && tags.length > 0) {
+        filteredMovieList = tags.slice();
+    } else if (tags.length === 0 && search.length > 0) {
+        filteredMovieList = search.slice();
+    } else {
+        alert("ничего не найдено");
     }
 
     accordionFilm.remove();
@@ -186,10 +191,14 @@ const compareFilters = (list1,list2) => {
     const accordionElement = `<div class="accordion" id="accordionFilm"></div>`;
     movieContainer.insertAdjacentHTML('afterbegin', accordionElement);
 
-    if (filteredMovieList.length === 0) {
+    let allUncheck = tagsArray.findIndex(x => x.checked === false);
+    if (filteredMovieList.length === 0 && !searchInput.value && allUncheck === -1 ) {
         buttonBool = false;
         addVisibleMovies(visibleMoviesList);
-    } else {
+    }
+
+
+    if (filteredMovieList.length > 0) {
         addVisibleMovies(filteredMovieList);
     }
 };
@@ -215,30 +224,60 @@ checkRefresh = async () => {
                 removeFavoriteMovie(id);
 
                 localStorage.removeItem("favorite");
-                setFavoriteList("favorite", favoriteVisibleMoviesList);
+
+                setFavoriteList("favorite", favoriteVisibleMoviesList); // добавляем в localStorage
 
             } else if (!visibleMoviesList[id].favorite) {
                 visibleMoviesList[id].favorite = true;
-
                 favoriteVisibleMoviesList.push(visibleMoviesList[id]);
+
                 addVisibleFavorite(id); // рендеринг
-                setFavoriteList("favorite", favoriteVisibleMoviesList);
+
+                // addVisibleMovies(favoriteVisibleMoviesList);
+
+                setFavoriteList("favorite", favoriteVisibleMoviesList); // добавляем в localStorage
             }
         })
     });
 
-    favoriteTab.onclick = () => {
-        let accordionFavoriteChildrens = accordionFavorite.childElementCount;
-        if (accordionFavoriteChildrens === 0) {
-            for (let i = 0; i < favoriteVisibleMoviesList.length; i++) {
-                let id = favoriteVisibleMoviesList[i].id;
-                addVisibleFavorite(id);
-            }
+    loadMoreFavorite = () => {
+        let moviesOnPage = accordionFavorite.children.length;
+        let moviesAtAll = favoriteVisibleMoviesList.length;
+        let result = moviesAtAll - moviesOnPage;
+        if (result >= 15) {
+            result = 15;
         }
+        result > 0 ? favoriteButton.style.display = 'block' : favoriteButton.style.display = 'none';
+
+        for (let i = moviesOnPage; i < moviesOnPage + result; i++) {
+            let id = favoriteVisibleMoviesList[i].id;
+            addVisibleFavorite(id);
+        }
+
+        accordionFavorite.children.length === moviesAtAll ? favoriteButton.style.display = 'none' : favoriteButton.style.display = 'block';
     };
 
-    const searchButton = document.querySelector('.form-inline button');
-    const searchInput = document.querySelector('.form-inline input');
+    favoriteTab.onclick = () => {
+        // let accordionFavoriteChildrens = accordionFavorite.childElementCount;
+        // if (accordionFavoriteChildrens === 0) {
+        //
+        //
+        //
+        //     for (let i = 0; i < favoriteVisibleMoviesList.length; i++) {
+        //         let id = favoriteVisibleMoviesList[i].id;
+        //         addVisibleFavorite(id);
+        //     }
+        // }
+
+
+        //=====================================
+        if (accordionFavorite.children.length === 0) {
+            loadMoreFavorite();
+        }
+    };
+    favoriteButton.onclick = () => {
+        loadMoreFavorite();
+    };
 
     searchButton.onclick = () => {
         searchMatchesList = [];
@@ -303,7 +342,7 @@ checkRefresh = async () => {
 };
 
 window.onbeforeunload = checkRefresh(); // в момент загрузки мы рендорим строки с  фильмами
-//после нажатия на чекбокс добавляем фейворится создаем обьект в localstorage
+
 
 
 
