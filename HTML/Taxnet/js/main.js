@@ -3,13 +3,13 @@ const movieButton = document.querySelector("#movie-button"),
       searchButton = document.querySelector('.form-inline button'),
       searchInput = document.querySelector('.form-inline input'),
       tagsSelector = document.querySelector("#movie-tags"),
-      mainMovieField = document.querySelectorAll("#accordionFilm"),
       accordionFavorite = document.querySelector("#accordionFavorite"),
       favoriteTab = document.querySelector("#profile-tab"),
       MOVIE_URL =  'js/jsons/films.json',
       tagsArray = [],
       visibleMoviesList = [];
 let favoriteVisibleMoviesList = [],
+    mainMovieField = document.querySelectorAll("#accordionFilm, #accordionFavorite"),
     searchMatchesList = [],
     tagsFilter = [],
     tagsFilterResult = [],
@@ -31,7 +31,7 @@ try {
     }
 } catch(e) {
     console.log(e);
-}
+} // пробуем получить данные из хранилища
 
 const addVisibleMovies = (list) => {
     const accordionFilm = document.querySelector("#accordionFilm");
@@ -78,7 +78,7 @@ const addVisibleMovies = (list) => {
             }
         }
 
-    };
+    }; //определяет сколько осталось показать из списка, определяет список показа
     loadMore(list);
 
     try {
@@ -93,7 +93,7 @@ const addVisibleMovies = (list) => {
         }
     } catch(e) {console.log(e)}
 
-}; // показать на странице фильмы
+}; // показывает на странице фильмы
 const addVisibleTags = () => {
     const tagsJson =  'js/jsons/tags.json';
 
@@ -122,7 +122,7 @@ const addVisibleTags = () => {
                        </div>`;
         tagsSelector.insertAdjacentHTML('beforeend', tags);
     };
-}; // показать на странице тэги
+}; // показывает на странице тэги
 const addVisibleFavorite = (targetId) => {
     //рендарим обьекты на страници из листа
     const renderFavorite = function (item) {
@@ -150,14 +150,14 @@ const addVisibleFavorite = (targetId) => {
     const itemIndex = favoriteVisibleMoviesList.findIndex(x => x.id === targetId);
     favoriteVisibleMoviesList[itemIndex].favorite = true;
     renderFavorite(favoriteVisibleMoviesList[itemIndex]);
-};
+}; // рендерит избранное
 const removeFavoriteMovie = (targetId) => {
     const itemIndex = favoriteVisibleMoviesList.findIndex(x => x.id === targetId);
     favoriteVisibleMoviesList.splice(itemIndex,1);
 
     let itemForRemove = accordionFavorite.querySelector('[data-movieid ="' + targetId + '"]');
     itemForRemove.remove();
-};
+}; // удаляет по строчно из избранного
 async function loadMovies (path) {
     const responce = await fetch(path);
     const data = await responce.json();
@@ -180,39 +180,39 @@ const compareFilters = (search,tags) => {
         filteredMovieList = tags.slice();
     } else if (tags.length === 0 && search.length > 0) {
         filteredMovieList = search.slice();
-    } else {
-        alert("ничего не найдено");
     }
 
-    accordionFilm.remove();
-    buttonBool = true;
+    // освобождаем место - удаляем строки
+    let list1 = document.querySelector("#accordionFilm").children;
+    for (let i = list1.length-1; i >= 0; --i) {
+        list1[i].remove();
+    }
 
-    const movieContainer = document.querySelector('#movie-container');
-    const accordionElement = `<div class="accordion" id="accordionFilm"></div>`;
-    movieContainer.insertAdjacentHTML('afterbegin', accordionElement);
+    buttonBool = true; // для кнопки после смены фильтров
 
+    //показываем основной список фильмов
     let allUncheck = tagsArray.findIndex(x => x.checked === false);
     if (filteredMovieList.length === 0 && !searchInput.value && allUncheck === -1 ) {
         buttonBool = false;
         addVisibleMovies(visibleMoviesList);
     }
 
-
+    //показываем фитрованный список фильмов
     if (filteredMovieList.length > 0) {
         addVisibleMovies(filteredMovieList);
     }
-};
+}; // фильтр поиска и тегов в тандеме
 
 
 checkRefresh = async () => {
-    await loadMovies(MOVIE_URL); //создаем список обьектов из json
+    await loadMovies(MOVIE_URL); // создаем список обьектов из json
     addVisibleMovies(visibleMoviesList); // рендорим на странице
 
     movieButton.onclick = () => { // + 15 видео по кнопке если false то filteredMovieList если true то visibleMoviesList
         buttonBool ? addVisibleMovies(filteredMovieList) : addVisibleMovies(visibleMoviesList);
-    };
+    }; // рендерит дополнительные 15 фильмов
 
-    addVisibleTags(); // рендори тэги
+    addVisibleTags(); // рендорит тэги
 
     mainMovieField.forEach((elem) => {
         elem.addEventListener('change', function (event){
@@ -238,7 +238,7 @@ checkRefresh = async () => {
                 setFavoriteList("favorite", favoriteVisibleMoviesList); // добавляем в localStorage
             }
         })
-    });
+    }); // отслеживает события с чекбоксами добавить в избранное
 
     loadMoreFavorite = () => {
         let moviesOnPage = accordionFavorite.children.length;
@@ -256,28 +256,14 @@ checkRefresh = async () => {
 
         accordionFavorite.children.length === moviesAtAll ? favoriteButton.style.display = 'none' : favoriteButton.style.display = 'block';
     };
-
     favoriteTab.onclick = () => {
-        // let accordionFavoriteChildrens = accordionFavorite.childElementCount;
-        // if (accordionFavoriteChildrens === 0) {
-        //
-        //
-        //
-        //     for (let i = 0; i < favoriteVisibleMoviesList.length; i++) {
-        //         let id = favoriteVisibleMoviesList[i].id;
-        //         addVisibleFavorite(id);
-        //     }
-        // }
-
-
-        //=====================================
         if (accordionFavorite.children.length === 0) {
             loadMoreFavorite();
         }
-    };
+    }; // рендерит избранное после перезагрузки
     favoriteButton.onclick = () => {
         loadMoreFavorite();
-    };
+    }; //рендерит избранное избранные фильмы +15 по кнопке
 
     searchButton.onclick = () => {
         searchMatchesList = [];
@@ -301,7 +287,7 @@ checkRefresh = async () => {
         }
 
         compareFilters (searchMatchesList,tagsFilterResult);
-    };
+    }; // фильтр поиска
 
     const tagsSelectorList = document.querySelectorAll("#movie-tags");
     tagsSelectorList.forEach((elem) => {
@@ -338,12 +324,8 @@ checkRefresh = async () => {
             }
             compareFilters (searchMatchesList,tagsFilterResult);
         })
-    });
+    }); // фильтр по тегам
 };
 
-window.onbeforeunload = checkRefresh(); // в момент загрузки мы рендорим строки с  фильмами
-
-
-
-
+window.onbeforeunload = checkRefresh();
 
