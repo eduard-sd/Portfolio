@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eeffbdde-87bc-46ca-808f-f30422be0237" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Rospartner/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Rospartner/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Rospartner/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Rospartner/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Rospartner/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Rospartner/todo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sait-portfolio/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sait-portfolio/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sait-portfolio/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../sait-portfolio/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sait-portfolio/Урок 1/Brackets.Release.1.8.msi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sait-portfolio/Урок 1/PSD/Desktop - HTML-assets/bg-header.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sait-portfolio/Урок 1/PSD/Desktop - HTML-assets/project_apollo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sait-portfolio/Урок 1/PSD/Desktop - HTML-assets/project_organica.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sait-portfolio/Урок 1/PSD/Desktop - HTML-assets/project_portfolio.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sait-portfolio/Урок 1/PSD/Desktop - HTML.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sait-portfolio/Урок 1/PSD/Desktop - HTML.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sait-portfolio_3/sait-portfolio_3.rar" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="120" selection-start-line="120" selection-end-line="120" />
+            <state relative-caret-position="206">
+              <caret line="162" column="20" lean-forward="true" selection-start-line="162" selection-start-column="20" selection-end-line="162" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -29,7 +38,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="-3409">
               <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
             </state>
           </provider>
@@ -38,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="58" column="31" lean-forward="true" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
+            <state relative-caret-position="773">
+              <caret line="78" column="22" lean-forward="true" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="22" />
               <folding>
                 <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -54,6 +63,8 @@
       <find>sw</find>
       <find>night</find>
       <find>stro</find>
+      <find>modal</find>
+      <find>more</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -75,16 +86,17 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="724" />
-    <option name="width" value="1884" />
-    <option name="height" value="345" />
+    <option name="x" value="182" />
+    <option name="y" value="493" />
+    <option name="width" value="1330" />
+    <option name="height" value="599" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -131,7 +143,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -183,16 +194,17 @@
       <workItem from="1555086615630" duration="6405000" />
       <workItem from="1555245161917" duration="7508000" />
       <workItem from="1555875215617" duration="12000" />
+      <workItem from="1557995703462" duration="12040000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29358000" />
+    <option name="totallyTimeSpent" value="41398000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="724" width="1884" height="345" extended-state="0" />
+    <frame x="182" y="493" width="1330" height="599" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.100758396" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14396285" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -219,27 +231,27 @@
     <entry file="file://$PROJECT_DIR$/src/icons/glass.svg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/script.js">
+    <entry file="file://$PROJECT_DIR$/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="120" selection-start-line="120" selection-end-line="120" />
+        <state relative-caret-position="773">
+          <caret line="78" column="22" lean-forward="true" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="-3409">
           <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.html">
+    <entry file="file://$PROJECT_DIR$/src/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="58" column="31" lean-forward="true" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="206">
+          <caret line="162" column="20" lean-forward="true" selection-start-line="162" selection-start-column="20" selection-end-line="162" selection-end-column="20" />
         </state>
       </provider>
     </entry>

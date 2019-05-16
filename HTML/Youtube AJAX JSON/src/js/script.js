@@ -1,3 +1,4 @@
+"use strict"
 const switcher = document.querySelector('#cbx'),
       more = document.querySelector('.more'),
       modal = document.querySelector('.modal'),
@@ -67,12 +68,18 @@ switcher.addEventListener('change', () => {switchMode()});
 
 
 const data = [
-['img/thumb_3.webp', 'img/thumb_4.webp', 'img/thumb_5.webp'],
-['#3 Верстка на flexbox CSS | Блок преимущества и галерея | Марафон верстки | Артем Исламов',
+    ['img/thumb_3.webp', 
+        'img/thumb_4.webp', 
+        'img/thumb_5.webp'],
+    ['#3 Верстка на flexbox CSS | Блок преимущества и галерея | Марафон верстки | Артем Исламов',
         '#2 Установка spikmi и работа с ветками на Github | Марафон вёрстки Урок 2',
         '#1 Верстка реального заказа landing Page | Марафон вёрстки | Артём Исламов'],
-    ['3,6 ​тыс. просмотров', '4,2 тыс. просмотров', '28 тыс. просмотров'],
-['X9SmcY3lM-U', '7BvHoh0BrMw', 'mC8JW_aG2EM']
+    ['3,6 ​тыс. просмотров', 
+        '4,2 тыс. просмотров', 
+        '28 тыс. просмотров'],
+    ['X9SmcY3lM-U', 
+        '7BvHoh0BrMw', 
+        'mC8JW_aG2EM']
 ];
 
 
@@ -94,6 +101,7 @@ more.addEventListener('click', ()=> {
             </div>
         `);
         videosWrapper.appendChild(card);
+        bindModal(card);
 
         setTimeout(() => { //callback function
             card.classList.remove('videos__item-active');
@@ -106,6 +114,7 @@ more.addEventListener('click', ()=> {
     videosWrapper.appendChild(button);
 
     slice('.videos__item-descr',100);//обрезание title
+
 }) ;
 
 function slice(selector, count) {
@@ -118,3 +127,69 @@ function slice(selector, count) {
 
 }
 
+function openModal() {
+    modal.style.display = 'block';
+}
+
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+function bindModalOnPage(cards) {
+    cards.forEach(elem => {
+        elem.addEventListener('click', function (event) {
+            event.preventDefault();
+            const id = elem.getAttribute('data-url');
+            loadVideo(id);
+            openModal();
+        })
+    })
+}
+bindModalOnPage(videos);
+
+function bindModal(card) {
+    card.addEventListener('click', function (event) {
+            event.preventDefault();
+            const id = card.getAttribute('data-url');
+            loadVideo(id);
+            openModal();
+    })
+}
+
+modal.addEventListener('click', function (event) {
+    const frame = document.querySelector('#frame');
+    if(event.target !== frame) {
+        stopVideo();
+        closeModal()
+    }
+});
+
+// 2. This code loads the IFrame Player API code asynchronously.
+ function createVideo() {
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+     setTimeout(function () {
+         player =  new YT.Player('frame', {
+             height: "100%",
+             width: "100%",
+             videoId: 'M7lc1UVf-VE',
+         });
+     }, 300)
+
+}
+createVideo();
+
+
+function loadVideo(id) {
+    player.loadVideoById({'videoId':`${id}`});
+}
+
+function stopVideo() {
+    player.stopVideo();
+}
