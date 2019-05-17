@@ -67,55 +67,59 @@ let night = false;
 switcher.addEventListener('change', () => {switchMode()});
 
 
-const data = [
-    ['img/thumb_3.webp', 
-        'img/thumb_4.webp', 
-        'img/thumb_5.webp'],
-    ['#3 Верстка на flexbox CSS | Блок преимущества и галерея | Марафон верстки | Артем Исламов',
-        '#2 Установка spikmi и работа с ветками на Github | Марафон вёрстки Урок 2',
-        '#1 Верстка реального заказа landing Page | Марафон вёрстки | Артём Исламов'],
-    ['3,6 ​тыс. просмотров', 
-        '4,2 тыс. просмотров', 
-        '28 тыс. просмотров'],
-    ['X9SmcY3lM-U', 
-        '7BvHoh0BrMw', 
-        'mC8JW_aG2EM']
-];
+// const data = [
+//     ['img/thumb_3.webp',
+//         'img/thumb_4.webp',
+//         'img/thumb_5.webp'],
+//     ['#3 Верстка на flexbox CSS | Блок преимущества и галерея | Марафон верстки | Артем Исламов',
+//         '#2 Установка spikmi и работа с ветками на Github | Марафон вёрстки Урок 2',
+//         '#1 Верстка реального заказа landing Page | Марафон вёрстки | Артём Исламов'],
+//     ['3,6 ​тыс. просмотров',
+//         '4,2 тыс. просмотров',
+//         '28 тыс. просмотров'],
+//     ['X9SmcY3lM-U',
+//         '7BvHoh0BrMw',
+//         'mC8JW_aG2EM']
+// ];
 
 
-more.addEventListener('click', ()=> {
-    const videosWrapper =  document.querySelector('.videos__wrapper');//video block
-    more.remove();
-
-    for (let i = 0; i < data[0].length ; i++) {
-        let card = document.createElement('a');
-        card.classList.add('videos__item', 'videos__item-active');
-        card.setAttribute('data-url',data[3][i]);
-        card.insertAdjacentHTML('afterbegin',`
-            <img src="${data[0][i]}" alt="thumb">
-            <div class="videos__item-descr">
-                ${data[1][i]}                        
-            </div>
-            <div class="videos__item-views">
-                    ${data[2][i]}
-            </div>
-        `);
-        videosWrapper.appendChild(card);
-        bindModal(card);
-
-        setTimeout(() => { //callback function
-            card.classList.remove('videos__item-active');
-        }, 10);
-    }
-
-    let button = document.createElement('button');
-    button.classList.add('more');
-    button.innerText = 'Загрузить еще';
-    videosWrapper.appendChild(button);
-
-    slice('.videos__item-descr',100);//обрезание title
-
-}) ;
+// more.addEventListener('click', ()=> {
+//     const videosWrapper =  document.querySelector('.videos__wrapper');//video block
+//     more.remove();
+//
+//     for (let i = 0; i < data[0].length ; i++) {
+//         let card = document.createElement('a');
+//         card.classList.add('videos__item', 'videos__item-active');
+//         card.setAttribute('data-url',data[3][i]);
+//         card.insertAdjacentHTML('afterbegin',`
+//             <img src="${data[0][i]}" alt="thumb">
+//             <div class="videos__item-descr">
+//                 ${data[1][i]}
+//             </div>
+//             <div class="videos__item-views">
+//                     ${data[2][i]}
+//             </div>
+//         `);
+//         videosWrapper.appendChild(card);
+//         bindModal(card);
+//
+//         setTimeout(() => { //callback function
+//             card.classList.remove('videos__item-active');
+//         }, 10);
+//     }
+//
+//     let button = document.createElement('button');
+//     button.classList.add('more');
+//     button.innerText = 'Загрузить еще';
+//     videosWrapper.appendChild(button);
+//
+//     slice('.videos__item-descr',100);//обрезание title
+//     if(night) {
+//         night = false;
+//         switchMode();
+//     }
+//
+// }) ;
 
 function slice(selector, count) {
     document.querySelectorAll(selector).forEach(item => {
@@ -180,7 +184,7 @@ modal.addEventListener('click', function (event) {
              width: "100%",
              videoId: 'M7lc1UVf-VE',
          });
-     }, 300)
+     }, 500)
 
 }
 createVideo();
@@ -193,3 +197,25 @@ function loadVideo(id) {
 function stopVideo() {
     player.stopVideo();
 }
+
+function load () {
+    gapi.client.init({
+        'apiKey': 'AIzaSyDG_6jmtg3jJzCT5QbtvTkMAYRqQ0IZnNM',
+        'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'],
+    }).then(function() {
+        return gapi.client.youtube.playlistItems.list({
+            "part": "snippet,contentDetails",
+            "maxResults": "6",
+            "playlistId": "PL3Ym7KeB8QMgd1OOAQUgSHmiocL6ri-y-"
+        })
+    }).then(function(response) {
+            // Handle the results here (response.result has the parsed body).
+            console.log("Response", response.result);
+        },
+        function(err) { console.error("Execute error", err); });
+}
+
+
+more.addEventListener('click', ()=> {
+    gapi.load("client", load);
+});
