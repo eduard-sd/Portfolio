@@ -1,10 +1,13 @@
-"use strict"
-const switcher = document.querySelector('#cbx'),
-      more = document.querySelector('.more'),
-      modal = document.querySelector('.modal'),
-      videos = document.querySelectorAll('.videos__item');
+"use strict";
 
-let player;
+const switcher = document.querySelector('#cbx'),
+      modal = document.querySelector('.modal'),
+      videos = document.querySelectorAll('.videos__item'),
+      videosWrapper =  document.querySelector('.videos__wrapper'),
+      more = document.querySelector('.more');
+let player,
+    nextPageToken = '',
+    prevPageToken = '';
 
 const bindSlideToggle = (trigger, boxBody, content, openClass) =>{
     let button = {
@@ -71,12 +74,15 @@ switcher.addEventListener('change', () => {switchMode()});
 //     ['img/thumb_3.webp',
 //         'img/thumb_4.webp',
 //         'img/thumb_5.webp'],
+
 //     ['#3 Верстка на flexbox CSS | Блок преимущества и галерея | Марафон верстки | Артем Исламов',
 //         '#2 Установка spikmi и работа с ветками на Github | Марафон вёрстки Урок 2',
 //         '#1 Верстка реального заказа landing Page | Марафон вёрстки | Артём Исламов'],
+
 //     ['3,6 ​тыс. просмотров',
 //         '4,2 тыс. просмотров',
 //         '28 тыс. просмотров'],
+
 //     ['X9SmcY3lM-U',
 //         '7BvHoh0BrMw',
 //         'mC8JW_aG2EM']
@@ -84,20 +90,20 @@ switcher.addEventListener('change', () => {switchMode()});
 
 
 // more.addEventListener('click', ()=> {
-//     const videosWrapper =  document.querySelector('.videos__wrapper');//video block
+//
 //     more.remove();
 //
 //     for (let i = 0; i < data[0].length ; i++) {
 //         let card = document.createElement('a');
 //         card.classList.add('videos__item', 'videos__item-active');
-//         card.setAttribute('data-url',data[3][i]);
+//         card.setAttribute('data-url',data[3][i]); //id
 //         card.insertAdjacentHTML('afterbegin',`
-//             <img src="${data[0][i]}" alt="thumb">
+//             <img src="${data[0][i]}" alt="thumb"> // картинка
 //             <div class="videos__item-descr">
-//                 ${data[1][i]}
+//                 ${data[1][i]} // название
 //             </div>
 //             <div class="videos__item-views">
-//                     ${data[2][i]}
+//                     ${data[2][i]} // просмотры
 //             </div>
 //         `);
 //         videosWrapper.appendChild(card);
@@ -206,16 +212,60 @@ function load () {
         return gapi.client.youtube.playlistItems.list({
             "part": "snippet,contentDetails",
             "maxResults": "6",
-            "playlistId": "PL3Ym7KeB8QMgd1OOAQUgSHmiocL6ri-y-"
+            "playlistId": "PL3Ym7KeB8QMgd1OOAQUgSHmiocL6ri-y-",
+            "pageToken": `${nextPageToken}`,
         })
     }).then(function(response) {
-            // Handle the results here (response.result has the parsed body).
             console.log("Response", response.result);
+            nextPageToken = response.result.nextPageToken;
+
+            if(response.result.items.length < 6) {
+                more.remove();
+            }
+
+            response.result.items.forEach(item => {
+                    let card = document.createElement('a');
+                    card.classList.add('videos__item', 'videos__item-active');
+                    card.setAttribute('data-url', item.contentDetails.videoId);
+                    card.insertAdjacentHTML('afterbegin', `
+                        <img src="${item.snippet.thumbnails.high.url}" alt="thumb">
+                        <div class="videos__item-descr">
+                            ${item.snippet.title}
+                        </div>
+                        <div class="videos__item-views">
+                                2,6 тыс. просмотров
+                        </div>
+                    `);
+
+                    videosWrapper.appendChild(card);
+                    bindModal(card);
+
+                    setTimeout(() => { //callback function
+                        card.classList.remove('videos__item-active');
+                    }, 10);
+
+                    slice('.videos__item-descr', 100);//обрезание title
+                    if (night) {
+                        night = false;
+                        switchMode();
+                    }
+            });
+
         },
         function(err) { console.error("Execute error", err); });
 }
 
-
-more.addEventListener('click', ()=> {
+more.addEventListener('click', () => {
     gapi.load("client", load);
 });
+
+
+
+function createButtonLoadMore() {
+    let button = document.createElement('button');
+    button.classList.add('more');
+    button.innerText = 'Загрузить еще';
+    videosWrapper.appendChild(button);
+
+    buttonEvent ();
+}
