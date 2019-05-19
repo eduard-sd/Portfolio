@@ -4,7 +4,8 @@ const switcher = document.querySelector('#cbx'),
       modal = document.querySelector('.modal'),
       videos = document.querySelectorAll('.videos__item'),
       videosWrapper =  document.querySelector('.videos__wrapper'),
-      more = document.querySelector('.more');
+      more = document.querySelector('.more'),
+      videosButton = document.querySelector('.videos__button');
 let player,
     nextPageToken = '',
     prevPageToken = '';
@@ -134,7 +135,6 @@ function slice(selector, count) {
             item.textContent = item.textContent.slice(0, 101).trim() + "...";
         }
     })
-
 }
 
 function openModal() {
@@ -175,7 +175,7 @@ modal.addEventListener('click', function (event) {
 });
 
 // 2. This code loads the IFrame Player API code asynchronously.
- function createVideo() {
+function createVideo() {
     var tag = document.createElement('script');
 
     tag.src = "https://www.youtube.com/iframe_api";
@@ -194,7 +194,6 @@ modal.addEventListener('click', function (event) {
 
 }
 createVideo();
-
 
 function loadVideo(id) {
     player.loadVideoById({'videoId':`${id}`});
@@ -216,56 +215,125 @@ function load () {
             "pageToken": `${nextPageToken}`,
         })
     }).then(function(response) {
-            console.log("Response", response.result);
-            nextPageToken = response.result.nextPageToken;
+        nextPageToken = response.result.nextPageToken;
 
-            if(response.result.items.length < 6) {
-                more.remove();
+        if(response.result.items.length < 6) {
+            more.remove();
+        }
+
+        response.result.items.forEach(item => {
+            let card = document.createElement('a');
+            card.classList.add('videos__item', 'videos__item-active');
+            card.setAttribute('data-url', item.contentDetails.videoId);
+            card.insertAdjacentHTML('afterbegin', `
+                <img src="${item.snippet.thumbnails.high.url}" alt="thumb">
+                <div class="videos__item-descr">
+                    ${item.snippet.title}
+                </div>
+                <div class="videos__item-views">
+                        2,6 тыс. просмотров
+                </div>
+            `);
+
+            videosWrapper.appendChild(card);
+            bindModal(card);
+
+            setTimeout(() => { //callback function
+                card.classList.remove('videos__item-active');
+            }, 10);
+
+            slice('.videos__item-descr', 100);//обрезание title
+            if (night) {
+                night = false;
+                switchMode();
             }
-
-            response.result.items.forEach(item => {
-                    let card = document.createElement('a');
-                    card.classList.add('videos__item', 'videos__item-active');
-                    card.setAttribute('data-url', item.contentDetails.videoId);
-                    card.insertAdjacentHTML('afterbegin', `
-                        <img src="${item.snippet.thumbnails.high.url}" alt="thumb">
-                        <div class="videos__item-descr">
-                            ${item.snippet.title}
-                        </div>
-                        <div class="videos__item-views">
-                                2,6 тыс. просмотров
-                        </div>
-                    `);
-
-                    videosWrapper.appendChild(card);
-                    bindModal(card);
-
-                    setTimeout(() => { //callback function
-                        card.classList.remove('videos__item-active');
-                    }, 10);
-
-                    slice('.videos__item-descr', 100);//обрезание title
-                    if (night) {
-                        night = false;
-                        switchMode();
-                    }
-            });
-
-        },
-        function(err) { console.error("Execute error", err); });
-}
-
-more.addEventListener('click', () => {
-    gapi.load("client", load);
-});
+        });
+    },
+    function(err) { console.error("Execute error", err); });
+} // мой канал
 
 
+const myList = () => {gapi.load("client", load)};
+more.addEventListener('click', myList);
 
 function createButtonLoadMore() {
     let button = document.createElement('button');
     button.classList.add('more');
     button.innerText = 'Загрузить еще';
-    videosWrapper.appendChild(button);
-
-    buttonEvent ();
+    videosButton.appendChild(button);
 }
+
+function search(target) {
+    gapi.client.init({
+        'apiKey': 'AIzaSyDG_6jmtg3jJzCT5QbtvTkMAYRqQ0IZnNM',
+        'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'],
+    }).then(function() {
+        return gapi.client.youtube.search.list({
+            'max': '10',
+            "maxResults": "6",
+            'part': 'snippet',
+            'q': `${target}`,
+            'type': '',
+            "pageToken": `${nextPageToken}`,
+        })
+    }).then(function(response) {
+        let temp = response.result.prevPageToken;
+
+        try {
+            nextPageToken = response.result.nextPageToken;
+
+            if (response.result.prevPageToken) {
+                prevPageToken = response.result.prevPageToken;
+            } else {
+                prevPageToken = response.result.nextPageToken;
+            }
+
+        } catch (erorr) {
+            console.log(error);
+        }
+
+        if(response.result.items.length < 6) {
+            more.remove();
+        }
+
+        response.result.items.forEach(item => {
+            let card = document.createElement('a');
+            card.classList.add('videos__item', 'videos__item-active');
+            card.setAttribute('data-url', item.id.videoId);
+            card.insertAdjacentHTML('afterbegin', `
+                <img src="${item.snippet.thumbnails.high.url}" alt="thumb">
+                <div class="videos__item-descr">
+                    ${item.snippet.title}
+                </div>
+                <div class="videos__item-views">
+                        2,6 тыс. просмотров
+                </div>
+            `);
+
+            videosWrapper.appendChild(card);
+            bindModal(card);
+
+            setTimeout(() => { //callback function
+                card.classList.remove('videos__item-active');
+            }, 10);
+
+            slice('.videos__item-descr', 100);//обрезание title
+            if (night) {
+                night = false;
+                switchMode();
+            }
+        });
+    })
+} // поиск по ютубу
+
+document.querySelector('.search').addEventListener('submit', (e) => {
+    e.preventDefault();
+    gapi.load("client", () => { search(document.querySelector('.search > input').value) });
+
+    videosWrapper.innerHTML = '';
+
+    more.removeEventListener('click', myList);
+    more.addEventListener('click', () => {
+        gapi.load("client", () => { search(document.querySelector('.search > input').value) });
+    });
+});
