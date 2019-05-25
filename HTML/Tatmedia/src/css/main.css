@@ -1,0 +1,135 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 200px;
+    background: lightskyblue;
+}
+
+.main-container {
+    margin-left: auto;
+    margin-right: auto;
+    background: lightpink;
+    position: relative;
+}
+
+
+.past-news__container {
+    width: 200px;
+    background: darkseagreen;
+    position: absolute;
+
+}
+
+@media (max-width: 630px) {
+    .past-news__container {
+        display: none;
+    }
+}
+
+
+.hot-news__container {
+    height: 100%;
+    margin-left: 205px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 1px dashed purple;
+}
+@media (max-width: 630px) {
+    .hot-news__container {
+        margin-left: 0;
+    }
+}
+
+.col-1 {
+    width: 33%;
+    background: #fff;
+    margin-top: 5px;
+}
+@media (max-width: 1220px) {
+    .col-1 {
+        width: 49.5%;
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 800px) {
+    .col-1 {
+        width: 99%;
+        margin-top: 5px;
+    }
+}
+
+.col-2 {
+    width: 33%;
+    background: #fff;
+    margin-top: 5px;
+}
+@media (max-width: 1220px) {
+    .col-2 {
+        width: 49.5%;
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 800px) {
+    .col-2 {
+        width: 99%;
+        margin-top: 5px;
+    }
+}
+
+.col-3 {
+    width: 33%;
+    background: #fff;
+    margin-top: 5px;
+}
+
+@media (max-width: 1220px) {
+    .col-3 {
+        width: 99.5%;
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 800px) {
+    .col-3 {
+        width: 99%;
+        margin-top: 5px;
+    }
+}
+
+
+.col-row-1{background: lightyellow;}
+.col-row-2{background: lightcyan;}
+.col-row-3{background: lightblue;}
+.past-news__col-1 {background: lightsalmon}
+
+.col-row-1,
+.col-row-2,
+.col-row-3,
+.past-news__col-1 {
+    height: 50px;
+    border: 1px solid #000000;
+    margin: 10px;
+}
+
+.col-row-1:hover,
+.col-row-2:hover,
+.col-row-3:hover,
+.past-news__col-1:hover {
+    background: #fff;
+    cursor: pointer;
+}
