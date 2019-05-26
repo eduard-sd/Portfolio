@@ -1,0 +1,20 @@
+
+
+.screen__banner {
+    content: "";
+    background: url(../../src/img/museum.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.screen__button {
+    width: 300px;
+    height: 70px;
+    cursor: pointer;
+    margin-bottom: 250px;
+    font-size: 25px;
+}
