@@ -53,63 +53,63 @@ body {
     }
 }
 
-.col-1 {
-    width: 33%;
-    background: #fff;
-    margin-top: 5px;
-}
-@media (max-width: 1220px) {
-    .col-1 {
-        width: 49.5%;
-        margin-top: 5px;
-    }
-}
+/*.col-1 {*/
+    /*width: 33%;*/
+    /*background: #fff;*/
+    /*margin-top: 5px;*/
+/*}*/
+/*@media (max-width: 1220px) {*/
+    /*.col-1 {*/
+        /*width: 49.5%;*/
+        /*margin-top: 5px;*/
+    /*}*/
+/*}*/
 
-@media (max-width: 800px) {
-    .col-1 {
-        width: 99%;
-        margin-top: 5px;
-    }
-}
+/*@media (max-width: 800px) {*/
+    /*.col-1 {*/
+        /*width: 99%;*/
+        /*margin-top: 5px;*/
+    /*}*/
+/*}*/
 
-.col-2 {
-    width: 33%;
-    background: #fff;
-    margin-top: 5px;
-}
-@media (max-width: 1220px) {
-    .col-2 {
-        width: 49.5%;
-        margin-top: 5px;
-    }
-}
+/*.col-2 {*/
+    /*width: 33%;*/
+    /*background: #fff;*/
+    /*margin-top: 5px;*/
+/*}*/
+/*@media (max-width: 1220px) {*/
+    /*.col-2 {*/
+        /*width: 49.5%;*/
+        /*margin-top: 5px;*/
+    /*}*/
+/*}*/
 
-@media (max-width: 800px) {
-    .col-2 {
-        width: 99%;
-        margin-top: 5px;
-    }
-}
+/*@media (max-width: 800px) {*/
+    /*.col-2 {*/
+        /*width: 99%;*/
+        /*margin-top: 5px;*/
+    /*}*/
+/*}*/
 
-.col-3 {
-    width: 33%;
-    background: #fff;
-    margin-top: 5px;
-}
+/*.col-3 {*/
+    /*width: 33%;*/
+    /*background: #fff;*/
+    /*margin-top: 5px;*/
+/*}*/
 
-@media (max-width: 1220px) {
-    .col-3 {
-        width: 99.5%;
-        margin-top: 5px;
-    }
-}
+/*@media (max-width: 1220px) {*/
+    /*.col-3 {*/
+        /*width: 99.5%;*/
+        /*margin-top: 5px;*/
+    /*}*/
+/*}*/
 
-@media (max-width: 800px) {
-    .col-3 {
-        width: 99%;
-        margin-top: 5px;
-    }
-}
+/*@media (max-width: 800px) {*/
+    /*.col-3 {*/
+        /*width: 99%;*/
+        /*margin-top: 5px;*/
+    /*}*/
+/*}*/
 
 
 .col-row-1{background: lightyellow;}
@@ -124,7 +124,36 @@ body {
     height: 50px;
     border: 1px solid #000000;
     margin: 10px;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 12px;
 }
+
+.col-row-1,
+.col-row-2,
+.col-row-3 {
+    width: 30%;
+
+}
+
+@media (max-width: 1220px) {
+    .col-row-1,
+    .col-row-2,
+    .col-row-3 {
+        width: 40%;
+
+    }
+}
+
+@media (max-width: 800px) {
+    .col-row-1,
+    .col-row-2,
+    .col-row-3 {
+        width: 99%;
+    }
+}
+
+
 
 .col-row-1:hover,
 .col-row-2:hover,
