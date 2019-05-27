@@ -14,20 +14,20 @@ body {
     margin-right: auto;
     width: 100%;
     height: 200px;
-    background: lightskyblue;
+    background: #ffffff;
 }
 
 .main-container {
     margin-left: auto;
     margin-right: auto;
-    background: lightpink;
+    background: #ffffff;
     position: relative;
 }
 
 
 .past-news__container {
     width: 200px;
-    background: darkseagreen;
+    background: #ffffff;
     position: absolute;
 
 }
@@ -53,69 +53,11 @@ body {
     }
 }
 
-/*.col-1 {*/
-    /*width: 33%;*/
-    /*background: #fff;*/
-    /*margin-top: 5px;*/
-/*}*/
-/*@media (max-width: 1220px) {*/
-    /*.col-1 {*/
-        /*width: 49.5%;*/
-        /*margin-top: 5px;*/
-    /*}*/
-/*}*/
-
-/*@media (max-width: 800px) {*/
-    /*.col-1 {*/
-        /*width: 99%;*/
-        /*margin-top: 5px;*/
-    /*}*/
-/*}*/
-
-/*.col-2 {*/
-    /*width: 33%;*/
-    /*background: #fff;*/
-    /*margin-top: 5px;*/
-/*}*/
-/*@media (max-width: 1220px) {*/
-    /*.col-2 {*/
-        /*width: 49.5%;*/
-        /*margin-top: 5px;*/
-    /*}*/
-/*}*/
-
-/*@media (max-width: 800px) {*/
-    /*.col-2 {*/
-        /*width: 99%;*/
-        /*margin-top: 5px;*/
-    /*}*/
-/*}*/
-
-/*.col-3 {*/
-    /*width: 33%;*/
-    /*background: #fff;*/
-    /*margin-top: 5px;*/
-/*}*/
-
-/*@media (max-width: 1220px) {*/
-    /*.col-3 {*/
-        /*width: 99.5%;*/
-        /*margin-top: 5px;*/
-    /*}*/
-/*}*/
-
-/*@media (max-width: 800px) {*/
-    /*.col-3 {*/
-        /*width: 99%;*/
-        /*margin-top: 5px;*/
-    /*}*/
-/*}*/
-
 
 .col-row-1{background: lightyellow;}
 .col-row-2{background: lightcyan;}
 .col-row-3{background: lightblue;}
-.past-news__col-1 {background: lightsalmon}
+.past-news__col-1 {background: #ffffff}
 
 .col-row-1,
 .col-row-2,
@@ -159,6 +101,17 @@ body {
 .col-row-2:hover,
 .col-row-3:hover,
 .past-news__col-1:hover {
-    background: #fff;
+    background: #aaaaaa;
     cursor: pointer;
+}
+
+
+.past-news__button {
+    border: 1px solid black;
+    border-radius: 15px;
+    background: darkgrey;
+}
+
+.past-news__button:hover {
+    background: lightgreen;
 }
