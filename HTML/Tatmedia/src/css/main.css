@@ -168,7 +168,7 @@ body {
     margin-left: 205px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     border: 1px dashed purple;
 }
 @media (max-width: 630px) {
