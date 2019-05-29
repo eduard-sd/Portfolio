@@ -78,6 +78,7 @@ function checkRefresh() {
 	});
 
 	//alert animation function
+	let alertVisabilty;
 	const alertAnimation = (event) => {
 		if (event) {
 			alertDiv.style.display = 'block';
@@ -135,7 +136,9 @@ function checkRefresh() {
 	//after click stil can cleen all fields
 	submitButton.onclick = function (event) {
 		event.preventDefault();
-		alertAnimation(false); 	// disapier alert animation
+		if (!alertVisabilty) {
+			alertAnimation(false); 	// disapier alert animation
+		}
 		formList.forEach(function(element) {
 			//place for some future code
 		});
