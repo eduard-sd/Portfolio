@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 15px;
+        }
+
+        .strike {
+            color: red;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="bear in bears"
+                v-bind:class="{ 'strike': bear.status }">
+                {{ bear.name }}
+            </li>
+            <!--v-bind:class === :class-->
+        </ul>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                bears: [
+                    {name:'гризли', status: false},
+                    {name:'белый', status: true},
+                    {name:'панда', status: true},
+                    {name:'губач', status: false}
+                ]
+            }
+        })
+
+    </script>
+</body>
+</html>

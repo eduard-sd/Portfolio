@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .square {
+            background: pink;
+            height: 200px;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+        }
+        .square2 {
+            background: pink;
+            height: 200px;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+        }
+        .square3 {
+            background: lightseagreen;
+            height: 50px;
+            width: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="show = !show; show2 = !show2">Button</button>
+    <!--Устанавливает display: none-->
+    <div class="square" v-show="show"></div>
+    <!--удаляет полнстью из дом-->
+    <div class="square2" v-if="show2"></div>
+
+    <div class="square3" v-else></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            show: false,
+            show2: false
+
+        },
+        method:{}
+    })
+</script>
+</body>
+</html>

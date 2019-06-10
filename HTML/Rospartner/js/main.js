@@ -133,7 +133,7 @@ function checkRefresh() {
 
 	//submit button shows animation
 	//should be visible after validation
-	//after click stil can cleen all fields
+	//after click still can clean all fields
 	submitButton.onclick = function (event) {
 		event.preventDefault();
 		if (!alertVisabilty) {

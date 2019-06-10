@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+  <link type = "text/css" rel = "stylesheet" href="../app/public/styles.css" />
+</head>
+
+<body>
+  <div id="app">
+    <h2 class="title has-text-centered dividing-header">UpVote!</h2>
+
+    <div class="section">
+      <article class="media" v-bind:class="{ 'blue-border': submission.votes >= 20}" v-for="submission in sortedSubmissions" v-bind:key="submission.key">
+        <submission-component
+                v-bind:submission="submission"
+                v-bind:submissions="sortedSubmissions">
+        </submission-component>
+      </article>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="./seed.js"></script>
+  <script src="./submission-component.js"></script>
+  <script src="./main.js"></script>
+</body>
+
+</html>
