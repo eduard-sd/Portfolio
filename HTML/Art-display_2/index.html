@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Книга отзывов</title>
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="./node_modules/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/other.min.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <div class="header">
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">
+            <i class="fa fa-language" aria-hidden="true"></i>
+          </label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01">
+          <option selected>Русский</option>
+          <option value="1">English</option>
+        </select>
+      </div>
+
+      <h1>Книга отзывов</h1>
+      <h2>Пожалуйста выберите музей</h2>
+    </div>
+
+    <div class="container">
+      <div class="card" style="width: 18rem;">
+        <img src="./img/800px-Bode_Museum.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Bode Museum</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 18rem;">
+        <img src="./img/800px-British_Museum_from_NE_2.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">British Museum</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 18rem;">
+        <img src="./img/Louvre_at_night_centered.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Louvre</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 18rem;">
+        <img src="./img/Uffizi_Gallery,_Florence.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Uffizi Gallery</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 18rem;">
+        <img src="./img/State_Historical_Museum,_Moscow,_Russia.jpg" class="card-img-top" intrinsicsize  alt="...">
+        <div class="card-body">
+          <h5 class="card-title">State Historical Museum</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal">
+      <div id='frame' class="modal__body">
+        <div class="content">
+          <textarea class="textarea textarea_theme_islands textarea_size_xl textarea_focused textarea__control i-bem"
+              data-bem='{"textarea":{}}' placeholder="Введите текст"></textarea>
+          <div class="pincode-container">
+            <div class="screen-keyboard screen-keyboard_mode_normal screen-keyboard_theme_default screen-keyboard_lang_pincode i-bem"
+                 data-bem='{"screen-keyboard":{}}'>
+              <div class="screen-keyboard__inner"
+                   data-keys="{&quot;normal&quot;:{&quot;keys&quot;:&quot;1234567890\u0000&quot;},&quot;specialKeys&quot;:{&quot;11&quot;:{&quot;type&quot;:&quot;backspace&quot;},&quot;12&quot;:{&quot;type&quot;:&quot;enter&quot;}}}"
+                   data-langs="[{&quot;id&quot;:&quot;pincode&quot;}]" data-allowed="[&quot;pincode&quot;]">
+                <div class="screen-keyboard__row">
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">1</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">2</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">3</div>
+                  </div>
+                </div>
+                <div class="screen-keyboard__row">
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">4</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">5</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">6</div>
+                  </div>
+                </div>
+                <div class="screen-keyboard__row">
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">7</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">8</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">9</div>
+                  </div>
+                </div>
+                <div class="screen-keyboard__row">
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">0</div>
+                  </div>
+                  <div class="screen-keyboard__key screen-keyboard__key_special_backspace">
+                    <div class="screen-keyboard__val"> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="keyboard-container">
+            <div class="screen-keyboard screen-keyboard_mode_normal screen-keyboard_theme_eo screen-keyboard_lang_rus i-bem"
+                 data-bem='{"screen-keyboard":{}}'>
+              <div class="screen-keyboard__inner"
+                   data-keys="{&quot;normal&quot;:{&quot;keys&quot;:&quot;1234567890-=\\\u0000ёйцукенгшщзхъ/\u0000фывапролджэ.,\u0000ячсми тьбю\u0000&quot;,&quot;specialKeys&quot;:{&quot;14&quot;:{&quot;type&quot;:&quot;backspace&quot;,&quot;label&quot;:&quot;УДАЛИТЬ&quot;},&quot;29&quot;:{&quot;type&quot;:&quot;enter&quot;,&quot;label&quot;:&quot;ВВОД&quot;},&quot;43&quot;:{&quot;type&quot;:&quot;lang-switcher&quot;,&quot;label&quot;:&quot;РУС / ENG&quot;},&quot;49&quot;:{&quot;type&quot;:&quot;space&quot;},&quot;54&quot;:{&quot;type&quot;:&quot;shift&quot;,&quot;mode&quot;:&quot;shift&quot;,&quot;label&quot;:&quot;ПРОПИСНЫЕ&quot;}}},&quot;shift&quot;:{&quot;keys&quot;:&quot;1234567890-=\\\u0000ЁЙЦУКЕНГШЩЗХЪ/\u0000ФЫВАПРОЛДЖЭ.,\u0000ЯЧСМИ ТЬБЮ\u0000&quot;,&quot;specialKeys&quot;:{&quot;14&quot;:{&quot;type&quot;:&quot;backspace&quot;,&quot;label&quot;:&quot;УДАЛИТЬ&quot;},&quot;29&quot;:{&quot;type&quot;:&quot;enter&quot;,&quot;label&quot;:&quot;ВВОД&quot;},&quot;43&quot;:{&quot;type&quot;:&quot;lang-switcher&quot;,&quot;label&quot;:&quot;РУС / ENG&quot;},&quot;49&quot;:{&quot;type&quot;:&quot;space&quot;},&quot;54&quot;:{&quot;type&quot;:&quot;shift&quot;,&quot;mode&quot;:&quot;shift&quot;,&quot;label&quot;:&quot;СТРОЧНЫЕ&amp;nbsp;&amp;nbsp;&amp;nbsp;&quot;}}}}"
+                   data-langs="[{&quot;id&quot;:&quot;rus&quot;,&quot;label&quot;:&quot;Рус&quot;},{&quot;id&quot;:&quot;eng&quot;,&quot;label&quot;:&quot;Eng&quot;}]"
+                   data-allowed="[&quot;rus&quot;,&quot;eng&quot;]">
+                <div class="screen-keyboard__row">
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">1</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">2</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">3</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">4</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">5</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">6</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">7</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">8</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">9</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">0</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">-</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">=</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">\</div>
+                  </div>
+                  <div class="screen-keyboard__key screen-keyboard__key_special_backspace">
+                    <div class="screen-keyboard__val"> </div>
+                    УДАЛИТЬ
+                  </div>
+                </div>
+                <div class="screen-keyboard__row">
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">ё</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">й</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">ц</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">у</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">к</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">е</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">н</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">г</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">ш</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">щ</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">з</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">х</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">ъ</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">/</div>
+                  </div>
+                  <div class="screen-keyboard__key screen-keyboard__key_special_enter">
+                    <div class="screen-keyboard__val"> </div>
+                    ВВОД
+                  </div>
+                </div>
+                <div class="screen-keyboard__row">
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">ф</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">ы</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">в</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">а</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">п</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">р</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">о</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">л</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">д</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">ж</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">э</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">.</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">,</div>
+                  </div>
+                  <div class="screen-keyboard__key screen-keyboard__key_special_lang-switcher"
+                       data-langs="[{&quot;id&quot;:&quot;rus&quot;,&quot;label&quot;:&quot;Рус&quot;},{&quot;id&quot;:&quot;eng&quot;,&quot;label&quot;:&quot;Eng&quot;}]">
+                    <div class="screen-keyboard__lang-switcher-label screen-keyboard__lang-switcher-label_active">
+                      Рус
+                    </div>
+                    <div class="screen-keyboard__lang-switcher-divider"></div>
+                    <div class="screen-keyboard__lang-switcher-label">Eng</div>
+                  </div>
+                </div>
+                <div class="screen-keyboard__row">
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">я</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">ч</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">с</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">м</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">и</div>
+                  </div>
+                  <div class="screen-keyboard__key screen-keyboard__key_special_space">
+                    <div class="screen-keyboard__val"></div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">т</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">ь</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">б</div>
+                  </div>
+                  <div class="screen-keyboard__key">
+                    <div class="screen-keyboard__val">ю</div>
+                  </div>
+                  <div class="screen-keyboard__key screen-keyboard__key_special_shift screen-keyboard__key_modechanger"
+                       data-mode="shift">
+                    <div class="screen-keyboard__val"> </div>
+                    ПРОПИСНЫЕ
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <input class="content__button" type="button" value="Сохранить текст">
+        </div>
+      </div>
+    </div>
+
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="js/renderer.js"></script>
+    <script src="js/other.min.js"></script>
+    <script src="js/other.main.js"></script>
+  </body>
+</html>
