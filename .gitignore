@@ -10,3 +10,5 @@ HTML/sait-portfolio_4/beboss/.idea*
 *.iml
 
 .idea
+
+node_modules
