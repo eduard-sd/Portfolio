@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <form style="display: inline-grid">
+        <span>{{count}} / 30</span>
+
+        <textarea v-model="text"></textarea>
+
+        <button v-if="count <= 30">Отправить</button>
+    </form>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            text: '',
+
+        },
+        computed:{
+            count: function () {
+                return this.text.length
+            }
+        }
+    })
+</script>
+</body>
+</html>
