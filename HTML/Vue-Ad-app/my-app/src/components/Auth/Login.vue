@@ -1,31 +1,13 @@
 <template>
-    <v-container
-            class="fill-height"
-            fluid
-    >
-        <v-row
-                align="center"
-                justify="center"
-        >
-            <v-col
-                    cols="12"
-                    sm="8"
-                    md="6"
-            >
+    <v-container class="fill-height" fluid>
+        <v-row align="center" justify="center" >
+            <v-col cols="12" sm="8" md="6">
                 <v-card class="elevation-12">
-                    <v-toolbar
-                            color="primary"
-                            dark
-                            flat
-                    >
-                        <v-toolbar-title>Login form</v-toolbar-title>
+                    <v-toolbar color="primary" dark flat>
+                        <v-toolbar-title>Registration form</v-toolbar-title>
                     </v-toolbar>
                     <v-card-text>
-                        <v-form
-                                ref="form"
-                                v-model="valid"
-                                value
-                        >
+                        <v-form ref="form" v-model="valid" value lazy-validation>
                             <v-text-field
                                     v-model="email"
                                     :rules="emailRules"
@@ -49,11 +31,7 @@
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer />
-                        <v-btn
-                                color="primary"
-                                @click="onSubmit"
-                                :disabled="!valid"
-                        >Login</v-btn>
+                        <v-btn color="primary" @click="onSubmit" :disabled="!valid">Login</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-col>
