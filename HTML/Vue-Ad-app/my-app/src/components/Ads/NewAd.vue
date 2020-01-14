@@ -84,9 +84,11 @@
                     const ad = {
                         title: this.title,
                         description: this.description,
-                        promo: this.promo
+                        promo: this.promo,
+                        imageSrc: 'https://bipbap.ru/wp-content/uploads/2017/10/0_8eb56_842bba74_XL-640x400.jpg'
                     }
-                    console.log(ad)
+
+                    this.$store.dispatch('createAd', ad)
                 }
             }
         }
