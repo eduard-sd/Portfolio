@@ -116,8 +116,8 @@ class PersonCalendar extends Calendar {
 
 let y = new PersonCalendar('Иван','Иванов', 2019);
 let r = new PersonCalendar('Катерина','Иванова', 2019);
-// y.january[1].color = 'green'
-// r.january[1].color = 'red'
+y.january[1].color = 'green';
+r.january[1].color = 'red';
 // console.log(y.allMonths[0])
 // console.log(r.allMonths[0])
 // y.setGreen(y.january,1,10);
